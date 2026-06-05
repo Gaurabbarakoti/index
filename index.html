@@ -1,524 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TridevCore ॐ — Sanatan Knowledge Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root{--gold:#c9a84c;--gold2:#f0d080;--saffron:#ff9500;--bg:#000;--card:#0a0008;--text:#f0e0c0;--blue:#4a90d9;--green:#27ae60;--red:#e74c3c;}
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
-body{background:#000;color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden;}
-
-/* STARS BG */
-.stars{position:fixed;inset:0;z-index:0;overflow:hidden;}
-.star{position:absolute;background:#fff;border-radius:50%;animation:twinkle linear infinite;}
-@keyframes twinkle{0%,100%{opacity:.1;transform:scale(1);}50%{opacity:.8;transform:scale(1.5);}}
-
-/* PARTICLES */
-.p{position:fixed;pointer-events:none;z-index:1;font-size:.75rem;opacity:.12;animation:drift linear infinite;}
-@keyframes drift{from{transform:translateY(100vh) rotate(0deg);}to{transform:translateY(-80px) rotate(360deg);opacity:0;}}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:12px 28px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,168,76,.25);}
-.nl{display:flex;align-items:center;gap:10px;}
-.nl-logo{width:40px;height:40px;border-radius:50%;border:2px solid rgba(201,168,76,.5);background:radial-gradient(circle,#1a0a20,#000);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
-.nl-text{font-family:'Cinzel Decorative',serif;font-size:.9rem;color:var(--gold);letter-spacing:2px;}
-.nlinks{display:flex;gap:18px;list-style:none;}
-.nlinks a{color:rgba(240,224,192,.65);text-decoration:none;font-size:.72rem;letter-spacing:1px;font-family:'Cinzel',serif;transition:.3s;}
-.nlinks a:hover{color:var(--gold);}
-@media(max-width:768px){.nlinks{display:none;}}
-
-/* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 20px 60px;overflow:hidden;}
-
-/* CSS COSMIC TRISHUL */
-.trishul-wrap{position:relative;width:180px;height:220px;margin:0 auto 30px;}
-.trishul{position:relative;width:180px;height:220px;}
-.t-stem{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:8px;height:120px;background:linear-gradient(0deg,#8b6914,var(--gold),var(--gold2));border-radius:4px;box-shadow:0 0 20px rgba(201,168,76,.8);}
-.t-mid{position:absolute;top:60px;left:50%;transform:translateX(-50%);width:6px;height:80px;background:linear-gradient(0deg,var(--gold),var(--gold2),#fff);border-radius:3px 3px 0 0;box-shadow:0 0 30px rgba(100,180,255,.9);}
-.t-left{position:absolute;top:70px;left:28px;width:5px;height:60px;background:linear-gradient(20deg,var(--gold),#87ceeb);border-radius:3px 3px 0 0;transform:rotate(-15deg);box-shadow:0 0 20px rgba(100,180,255,.7);}
-.t-right{position:absolute;top:70px;right:28px;width:5px;height:60px;background:linear-gradient(340deg,var(--gold),#87ceeb);border-radius:3px 3px 0 0;transform:rotate(15deg);box-shadow:0 0 20px rgba(100,180,255,.7);}
-.t-bar{position:absolute;top:110px;left:20px;right:20px;height:5px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);border-radius:3px;box-shadow:0 0 15px rgba(201,168,76,.8);}
-.t-glow{position:absolute;inset:-30px;background:radial-gradient(circle,rgba(201,168,76,.15),rgba(100,180,255,.1),transparent 70%);animation:pulse 2s ease-in-out infinite;}
-.t-ring{position:absolute;inset:-20px;border:1px solid rgba(201,168,76,.2);border-radius:50%;animation:spin 20s linear infinite;}
-.t-ring2{position:absolute;inset:-40px;border:1px solid rgba(100,180,255,.1);border-radius:50%;animation:spin 30s linear infinite reverse;}
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-@keyframes pulse{0%,100%{opacity:.5;transform:scale(1);}50%{opacity:1;transform:scale(1.1);}}
-.trishul-wrap{animation:float 4s ease-in-out infinite;}
-@keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-14px);}}
-
-.hero h1{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,7vw,4.5rem);font-weight:900;background:linear-gradient(135deg,var(--gold2) 0%,var(--gold) 40%,var(--saffron) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 30px rgba(201,168,76,.5));margin-bottom:8px;}
-.h-sub{font-family:'Cinzel',serif;font-size:clamp(.78rem,2vw,1rem);color:var(--gold);letter-spacing:4px;margin-bottom:10px;}
-.h-div{width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto;}
-.h-tag{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(240,224,192,.7);max-width:580px;margin:0 auto 20px;line-height:1.8;font-style:italic;}
-
-/* SOCIAL */
-.srow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:18px 0;}
-.sb{padding:9px 18px;border-radius:2px;font-family:'Cinzel',serif;font-size:.7rem;letter-spacing:1px;text-decoration:none;transition:all .3s;border:1px solid;display:flex;align-items:center;gap:6px;}
-.sy{border-color:rgba(255,0,0,.5);color:#ff4444;background:rgba(255,0,0,.05);}
-.sy:hover{background:#ff0000;color:#fff;}
-.st{border-color:rgba(0,242,234,.4);color:#00f2ea;background:rgba(0,242,234,.04);}
-.st:hover{background:#00f2ea;color:#000;}
-.si{border-color:rgba(225,48,108,.4);color:#e1306c;background:rgba(225,48,108,.04);}
-.si:hover{background:#e1306c;color:#fff;}
-.sf{border-color:rgba(24,119,242,.4);color:#1877f2;background:rgba(24,119,242,.04);}
-.sf:hover{background:#1877f2;color:#fff;}
-.sw{border-color:rgba(201,168,76,.4);color:var(--gold);background:rgba(201,168,76,.05);}
-.sw:hover{background:var(--gold);color:#000;}
-
-/* STATS */
-.stats{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;padding:28px 20px;background:rgba(201,168,76,.03);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);position:relative;z-index:2;}
-.stat{text-align:center;}
-.sn{font-family:'Cinzel Decorative',serif;font-size:1.6rem;color:var(--gold);}
-.sl{font-size:.7rem;color:rgba(240,224,192,.45);letter-spacing:2px;margin-top:4px;font-family:'Cinzel',serif;}
-
-/* GLOW LINE */
-.gl{height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.7),transparent);position:relative;z-index:2;animation:gp 3s ease-in-out infinite;}
-@keyframes gp{0%,100%{opacity:.3;}50%{opacity:1;}}
-
-/* WRAP */
-.wrap{position:relative;z-index:2;padding:80px 24px;max-width:1200px;margin:0 auto;}
-.st2{font-family:'Cinzel Decorative',serif;font-size:clamp(1.2rem,3vw,1.9rem);color:var(--gold);text-align:center;margin-bottom:6px;}
-.ss{text-align:center;font-style:italic;color:rgba(240,224,192,.4);margin-bottom:40px;font-size:.95rem;}
-.fb{background:linear-gradient(180deg,transparent,rgba(201,168,76,.02),transparent);border-top:1px solid rgba(201,168,76,.07);border-bottom:1px solid rgba(201,168,76,.07);}
-
-/* TRIDEV DIVINE CARDS */
-.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;}
-.tc{background:#000;border:1px solid rgba(201,168,76,.12);padding:36px 24px;text-align:center;transition:all .4s;position:relative;overflow:hidden;}
-.tc::before{content:'';position:absolute;top:0;left:0;width:100%;height:2px;transform:scaleX(0);transition:.4s;}
-.tc:hover{transform:translateY(-8px);box-shadow:0 24px 48px rgba(0,0,0,.6);}
-.tc:hover::before{transform:scaleX(1);}
-.tc.sh{border-top:3px solid #4a90d9;}
-.tc.sh::before{background:linear-gradient(90deg,transparent,#4a90d9,transparent);}
-.tc.sh:hover{border-color:#4a90d9;box-shadow:0 24px 48px rgba(74,144,217,.15);}
-.tc.vi{border-top:3px solid #27ae60;}
-.tc.vi::before{background:linear-gradient(90deg,transparent,#27ae60,transparent);}
-.tc.vi:hover{border-color:#27ae60;box-shadow:0 24px 48px rgba(39,174,96,.15);}
-.tc.br{border-top:3px solid #e74c3c;}
-.tc.br::before{background:linear-gradient(90deg,transparent,#e74c3c,transparent);}
-.tc.br:hover{border-color:#e74c3c;box-shadow:0 24px 48px rgba(231,76,60,.15);}
-
-/* CSS DIVINE ICONS */
-.dicon{width:90px;height:90px;margin:0 auto 20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;animation:float 4s ease-in-out infinite;}
-.sh .dicon{background:radial-gradient(circle,rgba(74,144,217,.2),rgba(0,0,0,.8));border:1px solid rgba(74,144,217,.4);box-shadow:0 0 30px rgba(74,144,217,.3);}
-.vi .dicon{background:radial-gradient(circle,rgba(39,174,96,.2),rgba(0,0,0,.8));border:1px solid rgba(39,174,96,.4);box-shadow:0 0 30px rgba(39,174,96,.3);}
-.br .dicon{background:radial-gradient(circle,rgba(231,76,60,.2),rgba(0,0,0,.8));border:1px solid rgba(231,76,60,.4);box-shadow:0 0 30px rgba(231,76,60,.3);}
-.tn{font-family:'Cinzel Decorative',serif;font-size:1.25rem;margin-bottom:6px;}
-.sh .tn{color:#4a90d9;}
-.vi .tn{color:#27ae60;}
-.br .tn{color:#e74c3c;}
-.ts{font-size:1.1rem;color:var(--saffron);margin-bottom:10px;opacity:.85;}
-.td{color:rgba(240,224,192,.65);line-height:1.8;font-size:.88rem;}
-.tm{margin-top:14px;padding:10px;background:rgba(201,168,76,.05);font-style:italic;color:var(--gold);font-size:.85rem;}
-
-/* VEDAS - CSS VISUAL */
-.vedas-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.vcard{background:#000;border:1px solid rgba(201,168,76,.12);padding:28px 22px;transition:all .4s;position:relative;overflow:hidden;}
-.vcard::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.03),transparent);pointer-events:none;}
-.vcard:hover{border-color:rgba(201,168,76,.5);transform:translateY(-4px);box-shadow:0 16px 32px rgba(0,0,0,.5);}
-.vcard-symbol{font-size:2.8rem;margin-bottom:14px;display:block;}
-.vcard-title{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin-bottom:4px;}
-.vcard-skt{color:var(--saffron);font-size:1.05rem;margin-bottom:8px;}
-.vcard-desc{color:rgba(240,224,192,.65);font-size:.85rem;line-height:1.75;}
-
-/* NEPAL PLACES - CSS ART */
-.np-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;}
-.np-card{background:#000;border:1px solid rgba(201,168,76,.15);padding:0;overflow:hidden;transition:all .4s;position:relative;}
-.np-card:hover{transform:translateY(-6px);border-color:rgba(201,168,76,.5);box-shadow:0 20px 40px rgba(0,0,0,.6);}
-.np-art{height:200px;position:relative;overflow:hidden;}
-
-/* CSS Art - Everest */
-.art-everest{background:linear-gradient(180deg,#0a0520 0%,#1a1035 30%,#2a1a50 50%,#1a0a20 100%);}
-.art-everest::before{content:'';position:absolute;bottom:0;left:0;right:0;height:160px;background:linear-gradient(180deg,transparent,rgba(74,144,217,.1));clip-path:polygon(20% 100%,35% 20%,50% 5%,65% 20%,80% 100%);background:linear-gradient(180deg,#fff 0%,#e0e8ff 30%,#87ceeb 60%,#4a90d9 100%);opacity:.7;}
-.art-everest::after{content:'सगरमाथा';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cinzel',serif;font-size:2rem;color:rgba(255,255,255,.15);letter-spacing:4px;}
-.everest-sun{position:absolute;top:20px;right:30px;width:40px;height:40px;background:radial-gradient(circle,#ff9500,#ff6b00,transparent 70%);border-radius:50%;box-shadow:0 0 30px #ff9500;animation:pulse 3s ease-in-out infinite;}
-
-/* CSS Art - Pashupatinath */
-.art-pashupati{background:linear-gradient(180deg,#1a0505 0%,#2d0a0a 40%,#0a0a00 100%);}
-.temple-base{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:80px;background:linear-gradient(180deg,#8b6914,#c9a84c);clip-path:polygon(0 100%,100% 100%,90% 0%,10% 0%);}
-.temple-roof{position:absolute;bottom:75px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:50px solid transparent;border-right:50px solid transparent;border-bottom:50px solid var(--gold);filter:drop-shadow(0 0 10px rgba(201,168,76,.8));}
-.temple-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:200px;height:120px;background:radial-gradient(ellipse,rgba(255,149,0,.2),transparent 70%);}
-.fire-l{position:absolute;bottom:5px;left:calc(50% - 50px);width:10px;height:25px;background:linear-gradient(0deg,#ff0000,#ff9500,#ffff00);border-radius:50% 50% 0 0;animation:flicker .5s ease-in-out infinite alternate;}
-.fire-r{position:absolute;bottom:5px;left:calc(50% + 40px);width:10px;height:25px;background:linear-gradient(0deg,#ff0000,#ff9500,#ffff00);border-radius:50% 50% 0 0;animation:flicker .7s ease-in-out infinite alternate;}
-@keyframes flicker{from{transform:scaleX(1) scaleY(1);}to{transform:scaleX(1.2) scaleY(1.1);}}
-
-/* CSS Art - Muktinath */
-.art-muktinath{background:linear-gradient(180deg,#000510 0%,#050a20 50%,#0a1530 100%);}
-.mtn-left{position:absolute;bottom:0;left:0;width:0;height:0;border-right:130px solid transparent;border-bottom:120px solid #1a2040;}
-.mtn-right{position:absolute;bottom:0;right:0;width:0;height:0;border-left:130px solid transparent;border-bottom:100px solid #151830;}
-.mtn-snow{position:absolute;bottom:60px;left:20px;width:60px;height:20px;background:#e0e8ff;border-radius:50%;opacity:.5;}
-.stars-art{position:absolute;inset:0;}
-.sa{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;animation:twinkle linear infinite;}
-
-/* CSS Art - Kingdom */
-.art-kingdom{background:linear-gradient(180deg,#0a0005 0%,#150010 50%,#0a0000 100%);}
-.palace{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:180px;height:100px;background:linear-gradient(180deg,#2a1a0a,#1a0a00);}
-.palace-tower{position:absolute;bottom:95px;left:50%;transform:translateX(-50%);width:40px;height:60px;background:linear-gradient(180deg,var(--gold),#8b6914);}
-.palace-flag{position:absolute;bottom:150px;left:calc(50% + 10px);width:25px;height:15px;background:linear-gradient(90deg,#003893,#003893 50%,#dc143c 50%);clip-path:polygon(0 0,100% 20%,100% 80%,0 100%);}
-.palace-glow{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:250px;height:150px;background:radial-gradient(ellipse,rgba(201,168,76,.1),transparent 70%);}
-
-.np-info{padding:20px;}
-.np-title{font-family:'Cinzel',serif;color:var(--gold);font-size:1rem;margin-bottom:6px;}
-.np-desc{color:rgba(240,224,192,.65);font-size:.85rem;line-height:1.65;}
-
-/* MANTRAS */
-.mb{background:rgba(0,0,0,.8);border-left:3px solid var(--gold);padding:20px 26px;margin-bottom:16px;transition:.3s;border:1px solid rgba(201,168,76,.1);border-left:3px solid var(--gold);}
-.mb:hover{background:rgba(201,168,76,.04);border-color:rgba(201,168,76,.3);}
-.ml{font-family:'Cinzel',serif;font-size:.62rem;letter-spacing:3px;color:var(--gold);margin-bottom:8px;text-transform:uppercase;}
-.ms{font-size:1.2rem;color:var(--saffron);line-height:1.9;}
-.mt2{margin-top:10px;color:rgba(240,224,192,.62);font-size:.88rem;line-height:1.7;}
-
-/* BOOKS */
-.bg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
-.bc{background:#000;border:1px solid rgba(201,168,76,.1);padding:20px 16px;transition:all .4s;display:flex;flex-direction:column;gap:7px;}
-.bc:hover{border-color:rgba(201,168,76,.5);transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.5);}
-.bi{font-size:2rem;}
-.bt{font-family:'Cinzel',serif;color:var(--gold);font-size:.85rem;}
-.bsk{color:var(--saffron);font-size:.95rem;}
-.bd{color:rgba(240,224,192,.6);font-size:.8rem;line-height:1.65;flex:1;}
-.rb{display:inline-block;padding:7px 14px;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.25);color:var(--gold);font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:1px;text-decoration:none;transition:.3s;text-align:center;margin-top:4px;}
-.rb:hover{background:var(--gold);color:#000;}
-
-/* SEPARATOR */
-.sep{display:flex;align-items:center;gap:14px;margin:50px auto;max-width:280px;}
-.sl2{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent);}
-.ss2{color:var(--gold);font-size:1.2rem;}
-
-/* FOOTER */
-footer{background:#000;border-top:1px solid rgba(201,168,76,.2);padding:44px 24px 24px;text-align:center;position:relative;z-index:2;}
-.fl{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;}
-.fl-icon{width:52px;height:52px;border-radius:50%;border:2px solid rgba(201,168,76,.4);background:radial-gradient(circle,#1a0a20,#000);display:flex;align-items:center;justify-content:center;font-size:1.5rem;}
-.ft{font-family:'Cinzel Decorative',serif;font-size:1.1rem;color:var(--gold);}
-.ftag{color:rgba(240,224,192,.38);font-style:italic;margin-bottom:18px;font-size:.9rem;}
-.flinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:18px;}
-.flinks a{color:rgba(240,224,192,.45);text-decoration:none;font-family:'Cinzel',serif;font-size:.65rem;letter-spacing:1px;transition:.3s;padding:5px 12px;border:1px solid rgba(201,168,76,.1);}
-.flinks a:hover{color:var(--gold);border-color:var(--gold);}
-.fc{color:rgba(240,224,192,.2);font-size:.75rem;}
-
-/* SCROLL TOP */
-.stt{position:fixed;bottom:22px;right:22px;width:42px;height:42px;background:var(--gold);color:#000;border:none;border-radius:50%;font-size:.95rem;cursor:pointer;z-index:999;transition:all .3s;display:flex;align-items:center;justify-content:center;font-weight:700;}
-.stt:hover{transform:scale(1.15);box-shadow:0 0 20px rgba(201,168,76,.6);}
-
-/* REVEAL */
-.rv{opacity:0;transform:translateY(22px);transition:.65s ease;}
-.rv.show{opacity:1;transform:translateY(0);}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TridevCore ॐ — Sanatan Knowledge Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Crimson+Text&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #d4af37;
+            --dark: #1a1a1a;
+            --cream: #f4e4bc;
+        }
+        body {
+            margin: 0;
+            font-family: 'Crimson Text', serif;
+            background-color: var(--dark);
+            color: var(--cream);
+            line-height: 1.6;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+        h1 {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold);
+            font-size: 3rem;
+            margin: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        .hero-section {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .card {
+            background: #262626;
+            padding: 20px;
+            border: 1px solid var(--gold);
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            border-top: 1px solid var(--gold);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+        }
+    </style>
 </head>
 <body>
 
-<!-- STARS -->
-<div class="stars" id="stars"></div>
+    <header>
+        <h1>TridevCore ॐ</h1>
+        <p>ज्ञान, भक्ति र सनातन संस्कृतिको संगम</p>
+    </header>
 
-<!-- PARTICLES -->
-<div class="p" style="left:5%;animation-duration:16s;animation-delay:0s">ॐ</div>
-<div class="p" style="left:15%;animation-duration:20s;animation-delay:3s">🔱</div>
-<div class="p" style="left:28%;animation-duration:14s;animation-delay:7s">ॐ</div>
-<div class="p" style="left:45%;animation-duration:22s;animation-delay:1s">🔱</div>
-<div class="p" style="left:60%;animation-duration:17s;animation-delay:9s">ॐ</div>
-<div class="p" style="left:75%;animation-duration:19s;animation-delay:4s">🔱</div>
-<div class="p" style="left:88%;animation-duration:15s;animation-delay:6s">ॐ</div>
+    <div class="container">
+        <section class="hero-section">
+            <h2>सनातन ज्ञानको यात्रामा स्वागत छ</h2>
+            <p>हाम्रो पोर्टलमा धर्म, दर्शन र आध्यात्मिक साधनाका विविध आयामहरू खोज्नुहोस्।</p>
+        </section>
 
-<!-- NAV -->
-<nav>
-  <div class="nl">
-    <div class="nl-logo">🔱</div>
-    <span class="nl-text">TridevCore ॐ</span>
-  </div>
-  <ul class="nlinks">
-    <li><a href="#hero">Home</a></li>
-    <li><a href="#tridev">Tridev</a></li>
-    <li><a href="#vedas">Vedas</a></li>
-    <li><a href="#nepal">Nepal</a></li>
-    <li><a href="#mantras">Mantras</a></li>
-    <li><a href="#books">Books</a></li>
-  </ul>
-</nav>
-
-<!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-content rv">
-
-    <!-- CSS TRISHUL -->
-    <div class="trishul-wrap">
-      <div class="trishul">
-        <div class="t-ring2"></div>
-        <div class="t-ring"></div>
-        <div class="t-glow"></div>
-        <div class="t-left"></div>
-        <div class="t-right"></div>
-        <div class="t-mid"></div>
-        <div class="t-bar"></div>
-        <div class="t-stem"></div>
-      </div>
+        <div class="card-grid">
+            <div class="card">
+                <h3>धर्मशास्त्र</h3>
+                <p>वेद, उपनिषद र पुराणहरूको गहिरो अध्ययन र विश्लेषण।</p>
+            </div>
+            <div class="card">
+                <h3>योग र ध्यान</h3>
+                <p>आन्तरिक शान्ति र शारीरिक सन्तुलनका लागि प्राचीन विधिहरू।</p>
+            </div>
+            <div class="card">
+                <h3>संस्कृति</h3>
+                <p>हाम्रा चाडपर्व, परम्परा र संस्कारहरूको वैज्ञानिक महत्व।</p>
+            </div>
+        </div>
     </div>
 
-    <h1>TRIDEVCORE ॐ</h1>
-    <div class="h-sub">SANATAN KNOWLEDGE PORTAL</div>
-    <div class="h-div"></div>
-    <p class="h-tag">सनातन धर्म — The Eternal Truth<br>नेपालको आत्मा • Soul of Nepal • नेपाल की आत्मा • NepalKo Atma</p>
+    <footer>
+        &copy; 2026 TridevCore ॐ — सबै अधिकार सुरक्षित।
+    </footer>
 
-    <div class="srow">
-      <a href="https://youtube.com/@TridevCoreOfficial" target="_blank" class="sb sy">▶ YouTube</a>
-      <a href="https://tiktok.com/@tridevcoreofficial" target="_blank" class="sb st">♪ TikTok</a>
-      <a href="https://instagram.com/tridevcoreofficial" target="_blank" class="sb si">◉ Instagram</a>
-      <a href="https://facebook.com/TridevCoreOfficial" target="_blank" class="sb sf">f Facebook</a>
-      <a href="https://tridevcoreofficial.github.io/knowledge" target="_blank" class="sb sw">🌐 Website</a>
-    </div>
-    <p style="font-style:italic;color:rgba(240,224,192,.3);font-size:.78rem">🇳🇵 Born in Nepal • Speaking to the World • सत्यमेव जयते</p>
-  </div>
-</section>
-
-<div class="gl"></div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="sn">9.5K+</div><div class="sl">YouTube</div></div>
-  <div class="stat"><div class="sn">46.6K</div><div class="sl">TikTok Likes</div></div>
-  <div class="stat"><div class="sn">4</div><div class="sl">Languages</div></div>
-  <div class="stat"><div class="sn">∞</div><div class="sl">Sanatan Truth</div></div>
-</div>
-
-<div class="gl"></div>
-
-<!-- TRIDEV -->
-<div class="fb" id="tridev">
-<div class="wrap">
-  <div class="st2 rv">🔱 The Holy Trinity — त्रिदेव</div>
-  <div class="ss rv">ब्रह्मा विष्णु महेश — Creation • Preservation • Transformation</div>
-  <div class="tg">
-
-    <div class="tc sh rv">
-      <div class="dicon">⚡</div>
-      <div class="tn">SHIVA — शिव</div>
-      <div class="ts">महादेव • Mahadev</div>
-      <div class="td">The Destroyer and Transformer. Supreme cosmic consciousness. Lord of all creation. God of gods.<br><br><b style="color:var(--gold)">नेपाली:</b> महादेव — सर्वशक्तिमान। पशुपतिनाथको भूमि नेपालमा शिवको दिव्य वास।<br><br><b style="color:#ff9500">हिन्दी:</b> शिव सर्वोच्च देव हैं — संहारकर्ता और मोक्षदाता।<br><br><b style="color:#aaa">Sanskrit:</b> शिवो महेश्वरः सर्वज्ञः सर्वशक्तिमान्।</div>
-      <div class="tm">ॐ नमः शिवाय | हर हर महादेव 🔱</div>
-    </div>
-
-    <div class="tc vi rv">
-      <div class="dicon">🌊</div>
-      <div class="tn">VISHNU — विष्णु</div>
-      <div class="ts">नारायण • Narayana</div>
-      <div class="td">The Preserver. Cosmic protector of the universe through ten divine avatars (Dashavatara). The all-pervading supreme reality.<br><br><b style="color:var(--gold)">नेपाली:</b> विष्णु — ब्रह्माण्डका पालनहार। दश अवतारका माध्यमले सृष्टिको रक्षा।<br><br><b style="color:#ff9500">हिन्दी:</b> विष्णु ब्रह्मांड के पालनहार और रक्षक हैं।<br><br><b style="color:#aaa">Sanskrit:</b> विष्णुः सर्वव्यापी सर्वरक्षकः परमात्मा।</div>
-      <div class="tm">ॐ नमो भगवते वासुदेवाय 🌊</div>
-    </div>
-
-    <div class="tc br rv">
-      <div class="dicon">🔥</div>
-      <div class="tn">BRAHMA — ब्रह्मा</div>
-      <div class="ts">विधाता • Vidhata</div>
-      <div class="td">The Creator of the Universe. Created all living beings, the cosmos, and the sacred Vedas. The four-faced lord of knowledge.<br><br><b style="color:var(--gold)">नेपाली:</b> ब्रह्मा — सृष्टिकर्ता। वेद र समग्र ब्रह्माण्ड सिर्जना गर्नुभयो।<br><br><b style="color:#ff9500">हिन्दी:</b> ब्रह्मा सृष्टि के रचयिता और वेदों के स्रोत हैं।<br><br><b style="color:#aaa">Sanskrit:</b> ब्रह्मा सर्वस्रष्टा वेदज्ञः चतुर्मुखः।</div>
-      <div class="tm">ॐ ब्रह्मणे नमः | ॐ विधात्रे नमः 🔥</div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-<div class="sep"><div class="sl2"></div><div class="ss2">📜</div><div class="sl2"></div></div>
-
-<!-- VEDAS -->
-<div class="wrap" id="vedas">
-  <div class="st2 rv">📜 The Four Vedas — चार वेद</div>
-  <div class="ss rv">मानवजातिका सबैभन्दा पुरानो ग्रन्थ — Oldest Scriptures of Humanity</div>
-  <div class="vedas-grid">
-    <div class="vcard rv">
-      <span class="vcard-symbol">🌅</span>
-      <div class="vcard-title">Rigveda — ऋग्वेद</div>
-      <div class="vcard-skt">ऋग्वेद संहिता</div>
-      <div class="vcard-desc">Oldest of four Vedas. 1,028 hymns praising the gods. Foundation of all Sanatan knowledge. Written in Vedic Sanskrit.<br><br><b style="color:var(--gold)">नेपाली:</b> सबैभन्दा पुरानो वेद। देवताहरूको स्तुतिमा १०२८ ऋचाहरू।<br><b style="color:#ff9500">हिन्दी:</b> सबसे प्राचीन वेद।</div>
-    </div>
-    <div class="vcard rv">
-      <span class="vcard-symbol">🎵</span>
-      <div class="vcard-title">Samaveda — सामवेद</div>
-      <div class="vcard-skt">सामवेद संहिता</div>
-      <div class="vcard-desc">The Veda of melodies and chants. Foundation of Indian classical music. Sacred hymns sung during rituals.<br><br><b style="color:var(--gold)">नेपाली:</b> संगीत र मन्त्रको वेद। भारतीय शास्त्रीय संगीतको जग।<br><b style="color:#ff9500">हिन्दी:</b> संगीत और मंत्रों का वेद।</div>
-    </div>
-    <div class="vcard rv">
-      <span class="vcard-symbol">⚔️</span>
-      <div class="vcard-title">Yajurveda — यजुर्वेद</div>
-      <div class="vcard-skt">यजुर्वेद संहिता</div>
-      <div class="vcard-desc">The Veda of rituals and ceremonies. Contains prose mantras for yajna (fire sacrifice). Guide for Vedic rituals.<br><br><b style="color:var(--gold)">नेपाली:</b> यज्ञ र अनुष्ठानको वेद।<br><b style="color:#ff9500">हिन्दी:</b> यज्ञ और अनुष्ठान का वेद।</div>
-    </div>
-    <div class="vcard rv">
-      <span class="vcard-symbol">🌿</span>
-      <div class="vcard-title">Atharvaveda — अथर्ववेद</div>
-      <div class="vcard-skt">अथर्ववेद संहिता</div>
-      <div class="vcard-desc">The Veda of everyday life. Contains knowledge of medicine, science, philosophy and daily rituals.<br><br><b style="color:var(--gold)">नेपाली:</b> दैनिक जीवन र औषधिको वेद।<br><b style="color:#ff9500">हिन्दी:</b> दैनिक जीवन और विज्ञान का वेद।</div>
-    </div>
-  </div>
-</div>
-
-<div class="gl"></div>
-
-<!-- NEPAL SACRED PLACES - CSS ART -->
-<div class="fb" id="nepal">
-<div class="wrap">
-  <div class="st2 rv">🇳🇵 Sacred Nepal — पवित्र नेपाल</div>
-  <div class="ss rv">पशुपतिनाथको भूमि — The Land of Gods & Eternal Dharma</div>
-  <div class="np-grid">
-
-    <div class="np-card rv">
-      <div class="np-art art-pashupati">
-        <div class="temple-glow"></div>
-        <div class="temple-base"></div>
-        <div class="temple-roof"></div>
-        <div class="fire-l"></div>
-        <div class="fire-r"></div>
-      </div>
-      <div class="np-info">
-        <div class="np-title">🏛️ Pashupatinath Temple</div>
-        <div class="np-desc">World's most sacred Shiva temple. Kathmandu, Nepal. Divine seat of Lord Shiva as Pashupatinath.<br><b style="color:var(--gold)">नेपाली:</b> संसारको सबैभन्दा पवित्र शिव मन्दिर।</div>
-      </div>
-    </div>
-
-    <div class="np-card rv">
-      <div class="np-art art-muktinath">
-        <div class="mtn-left"></div>
-        <div class="mtn-right"></div>
-        <div class="mtn-snow"></div>
-        <div class="stars-art" id="sart"></div>
-      </div>
-      <div class="np-info">
-        <div class="np-title">🕌 Muktinath Temple</div>
-        <div class="np-desc">Sacred to Hindus & Buddhists. 3,710m altitude, Mustang. Temple of liberation.<br><b style="color:var(--gold)">नेपाली:</b> मुक्तिनाथ — मुक्तिको पवित्र ठाउँ।</div>
-      </div>
-    </div>
-
-    <div class="np-card rv">
-      <div class="np-art art-everest">
-        <div class="everest-sun"></div>
-      </div>
-      <div class="np-info">
-        <div class="np-title">🏔️ Sagarmatha — Everest</div>
-        <div class="np-desc">Highest peak on Earth. 8,848m. Crown of Nepal's eternal glory.<br><b style="color:var(--gold)">नेपाली:</b> पृथ्वीको सबैभन्दा अग्लो शिखर। नेपालको गौरव।</div>
-      </div>
-    </div>
-
-    <div class="np-card rv">
-      <div class="np-art art-kingdom">
-        <div class="palace-glow"></div>
-        <div class="palace"></div>
-        <div class="palace-tower"></div>
-        <div class="palace-flag"></div>
-      </div>
-      <div class="np-info">
-        <div class="np-title">👑 Hindu Kingdom — हिन्दू राज्य</div>
-        <div class="np-desc">Nepal was the world's only Hindu Kingdom. Sacred land of Sanatan Dharma for thousands of years.<br><b style="color:var(--gold)">नेपाली:</b> संसारको एकमात्र हिन्दू राज्य।</div>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-<div class="sep"><div class="sl2"></div><div class="ss2">🕉</div><div class="sl2"></div></div>
-
-<!-- MANTRAS -->
-<div class="wrap" id="mantras">
-  <div class="st2 rv">🕉 Sacred Mantras — पवित्र मन्त्रहरू</div>
-  <div class="ss rv">Divine vibrations of the universe — ब्रह्माण्डका दिव्य कम्पनहरू</div>
-
-  <div class="mb rv">
-    <div class="ml">MAHAMRITYUNJAYA MANTRA — महामृत्युञ्जय मन्त्र</div>
-    <div class="ms">ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम् ।<br>उर्वारुकमिव बन्धनान् मृत्योर्मुक्षीय मामृतात् ॥</div>
-    <div class="mt2"><b style="color:var(--gold)">English:</b> We worship Shiva, the three-eyed one. May he liberate us from death for immortality.<br><b style="color:var(--gold)">नेपाली:</b> हामी त्रिनेत्रधारी शिवको पूजा गर्छौं। मृत्युबाट मुक्त गरून्।<br><b style="color:#ff9500">हिन्दी:</b> हम शिव की पूजा करते हैं। वे मृत्यु से मुक्त करें।</div>
-  </div>
-
-  <div class="mb rv">
-    <div class="ml">GAYATRI MANTRA — गायत्री मन्त्र</div>
-    <div class="ms">ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं<br>भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ॥</div>
-    <div class="mt2"><b style="color:var(--gold)">English:</b> We meditate on the divine light of the sun. May it illuminate our minds.<br><b style="color:var(--gold)">नेपाली:</b> सूर्यको दिव्य प्रकाशमा ध्यान। बुद्धि प्रकाशित गरोस्।<br><b style="color:#ff9500">हिन्दी:</b> सूर्य के दिव्य प्रकाश का ध्यान।</div>
-  </div>
-
-  <div class="mb rv">
-    <div class="ml">OM NAMAH SHIVAYA — ॐ नमः शिवाय</div>
-    <div class="ms">ॐ नमः शिवाय ।</div>
-    <div class="mt2"><b style="color:var(--gold)">English:</b> I bow to Shiva. Represents the five elements of nature.<br><b style="color:var(--gold)">नेपाली:</b> शिवलाई नमस्कार। पाँच तत्वको प्रतीक।<br><b style="color:#ff9500">हिन्दी:</b> शिव को नमस्कार।</div>
-  </div>
-
-  <div class="mb rv">
-    <div class="ml">VISHNU MANTRA — विष्णु मन्त्र</div>
-    <div class="ms">ॐ नमो भगवते वासुदेवाय ।</div>
-    <div class="mt2"><b style="color:var(--gold)">English:</b> I bow to Lord Vasudeva. The liberation mantra.<br><b style="color:var(--gold)">नेपाली:</b> भगवान विष्णुलाई नमस्कार।<br><b style="color:#ff9500">हिन्दी:</b> भगवान विष्णु को नमस्कार।</div>
-  </div>
-
-  <div class="mb rv">
-    <div class="ml">BRAHMA MANTRA — ब्रह्मा मन्त्र</div>
-    <div class="ms">ॐ ब्रह्मणे नमः ।</div>
-    <div class="mt2"><b style="color:var(--gold)">English:</b> I bow to Brahma, the creator.<br><b style="color:var(--gold)">नेपाली:</b> ब्रह्मालाई नमस्कार।<br><b style="color:#ff9500">हिन्दी:</b> ब्रह्मा को नमस्कार।</div>
-  </div>
-</div>
-
-<div class="gl"></div>
-
-<!-- BOOKS - COMPLETE SANATAN LIBRARY -->
-<div class="fb" id="books">
-<div class="wrap">
-  <div class="st2 rv">📚 Complete Sanatan Library — सम्पूर्ण सनातन पुस्तकालय</div>
-  <div class="ss rv">Every sacred scripture of Sanatan Dharma — सबै पवित्र ग्रन्थहरू</div>
-  <div class="bg2">
-    <div class="bc rv"><div class="bi">🌸</div><div class="bt">Bhagavad Gita</div><div class="bsk">भगवद् गीता</div><div class="bd">700 verses. Lord Krishna's eternal wisdom on Kurukshetra battlefield.<br><b style="color:var(--gold)">नेपाली:</b> श्रीकृष्णको दिव्य उपदेश।</div><a href="https://www.holy-bhagavad-gita.org" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🏹</div><div class="bt">Ramayana</div><div class="bsk">रामायण</div><div class="bd">24,000 verses by Valmiki. Epic of Lord Ram's dharma.<br><b style="color:var(--gold)">नेपाली:</b> भगवान रामको महाकाव्य।</div><a href="https://www.valmikiramayan.net" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">⚡</div><div class="bt">Mahabharata</div><div class="bsk">महाभारत</div><div class="bd">World's longest epic. 100,000 verses. Dharma vs Adharma.<br><b style="color:var(--gold)">नेपाली:</b> संसारको सबैभन्दा लामो महाकाव्य।</div><a href="https://www.sacred-texts.com/hin/maha/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🌊</div><div class="bt">Shiva Purana</div><div class="bsk">शिव पुराण</div><div class="bd">Glory and divine stories of Lord Mahadev.<br><b style="color:var(--gold)">नेपाली:</b> महादेवको महिमा र लीला।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🌺</div><div class="bt">Vishnu Purana</div><div class="bsk">विष्णु पुराण</div><div class="bd">Ten avatars and cosmic creation story of Narayana.<br><b style="color:var(--gold)">नेपाली:</b> विष्णुका दश अवतारको कथा।</div><a href="https://www.sacred-texts.com/hin/vp/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">💎</div><div class="bt">Upanishads</div><div class="bsk">उपनिषद्</div><div class="bd">108 philosophical texts. Source of Vedanta wisdom.<br><b style="color:var(--gold)">नेपाली:</b> १०८ दार्शनिक ग्रन्थ।</div><a href="https://www.sacred-texts.com/hin/upan/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🕉️</div><div class="bt">Rigveda</div><div class="bsk">ऋग्वेद</div><div class="bd">1,028 hymns. Oldest known religious text in the world.<br><b style="color:var(--gold)">नेपाली:</b> सबैभन्दा पुरानो वेद।</div><a href="https://www.sacred-texts.com/hin/rigveda/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🧘</div><div class="bt">Yoga Sutras</div><div class="bsk">योग सूत्र</div><div class="bd">Patanjali's 196 sutras. Path to liberation and enlightenment.<br><b style="color:var(--gold)">नेपाली:</b> पतञ्जलिको योग दर्शन।</div><a href="https://www.sacred-texts.com/hin/yogasutr.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🌙</div><div class="bt">Devi Mahatmyam</div><div class="bsk">दुर्गा सप्तशती</div><div class="bd">700 verses. Glory of Goddess Durga. Destroyer of evil.<br><b style="color:var(--gold)">नेपाली:</b> देवी दुर्गाको महिमा।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🔱</div><div class="bt">Skanda Purana</div><div class="bsk">स्कन्द पुराण</div><div class="bd">Largest Purana. Includes Nepal Mahatmya. Stories of Lord Kartikeya.<br><b style="color:var(--gold)">नेपाली:</b> सबैभन्दा ठूलो पुराण — नेपाल माहात्म्य।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">☀️</div><div class="bt">Surya Siddhanta</div><div class="bsk">सूर्य सिद्धान्त</div><div class="bd">Ancient Hindu astronomy. Proof of advanced Vedic science.<br><b style="color:var(--gold)">नेपाली:</b> प्राचीन हिन्दू खगोल विज्ञान।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">📖</div><div class="bt">Arthashastra</div><div class="bsk">अर्थशास्त्र</div><div class="bd">Kautilya's masterpiece on statecraft, economics & politics.<br><b style="color:var(--gold)">नेपाली:</b> कौटिल्यको राजनीति शास्त्र।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🌟</div><div class="bt">Brahma Purana</div><div class="bsk">ब्रह्म पुराण</div><div class="bd">First of the 18 Mahapuranas. Stories of creation.<br><b style="color:var(--gold)">नेपाली:</b> १८ महापुराणमा पहिलो।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🦁</div><div class="bt">Narada Purana</div><div class="bsk">नारद पुराण</div><div class="bd">Divine knowledge revealed by Sage Narada. Bhakti and wisdom.<br><b style="color:var(--gold)">नेपाली:</b> नारद ऋषिको दिव्य ज्ञान।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🐚</div><div class="bt">Bhagavata Purana</div><div class="bsk">भागवत पुराण</div><div class="bd">12 books on devotion to Vishnu. Stories of Krishna.<br><b style="color:var(--gold)">नेपाली:</b> विष्णु भक्तिको महाग्रन्थ।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-    <div class="bc rv"><div class="bi">🌊</div><div class="bt">Agni Purana</div><div class="bsk">अग्नि पुराण</div><div class="bd">Encyclopedia of ancient Hindu knowledge. Arts, science, dharma.<br><b style="color:var(--gold)">नेपाली:</b> प्राचीन हिन्दू ज्ञानको विश्वकोश।</div><a href="https://www.sacred-texts.com/hin/index.htm" target="_blank" class="rb">📖 Read</a></div>
-  </div>
-</div>
-</div>
-
-<div class="gl"></div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="fl">
-    <div class="fl-icon">🔱</div>
-  </div>
-  <div class="ft">TridevCore ॐ</div>
-  <div class="ftag">Fearless Voice of Nepal | Sanatan Knowledge Portal</div>
-  <div style="width:140px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:12px auto 18px;"></div>
-  <div class="flinks">
-    <a href="https://youtube.com/@TridevCoreOfficial" target="_blank">▶ YouTube</a>
-    <a href="https://tiktok.com/@tridevcoreofficial" target="_blank">♪ TikTok</a>
-    <a href="https://instagram.com/tridevcoreofficial" target="_blank">◉ Instagram</a>
-    <a href="https://facebook.com/TridevCoreOfficial" target="_blank">f Facebook</a>
-    <a href="https://tridevcoreofficial.github.io/knowledge" target="_blank">🌐 Website</a>
-  </div>
-  <p style="color:var(--gold);font-style:italic;margin-bottom:10px;font-size:.88rem">🇳🇵 Jay Nepal | 🕉 Har Har Mahadev | 🔥 Power Of The Three</p>
-  <div class="fc">© TridevCore ॐ — All Rights Reserved | Powered by TridevCore Media</div>
-</footer>
-
-<button class="stt" onclick="window.scrollTo({top:0,behavior:'smooth'})">🔱</button>
-
-<script>
-// Generate stars
-const starsEl = document.getElementById('stars');
-for(let i=0;i<120;i++){
-  const s = document.createElement('div');
-  s.className='star';
-  s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${Math.random()*2+1}px;height:${s.style.width};animation-duration:${Math.random()*4+2}s;animation-delay:${Math.random()*4}s;`;
-  starsEl.appendChild(s);
-}
-
-// Generate small stars for muktinath art
-const sa = document.getElementById('sart');
-if(sa){for(let i=0;i<30;i++){const s=document.createElement('div');s.className='sa';s.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*70}%;animation-duration:${Math.random()*3+1}s;animation-delay:${Math.random()*3}s;`;sa.appendChild(s);}}
-
-// Reveal on scroll
-const obs = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show');});},{threshold:0.1});
-document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-</script>
 </body>
 </html>
