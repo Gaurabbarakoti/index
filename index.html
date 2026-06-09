@@ -2,184 +2,480 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Gaurab Barakoti | Sanatan Dharma</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Gaurab Barakoti | Sanatan Dharma Grantha Mandir</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:wght@400;700;800;900&display=swap" rel="stylesheet" />
 <style>
-  :root {
-    --black: #0a0a0a;
-    --surface: #111111;
-    --card: #1a1a1a;
-    --saffron: #ff9933;
-    --gold: #ffd700;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  * { margin:0; padding:0; box-sizing:border-box; }
+  :root {
+    --black: #050302;
+    --surface: #0e0b08;
+    --card: #19130e;
+    --card-hover: #221e18;
+    --saffron: #ff8c42;
+    --saffron-dark: #e56e1f;
+    --gold: #f7c873;
+    --sand: #d4c5a9;
+    --rudraksha: #6b4226;
+  }
+
   body {
     background: var(--black);
-    color: #fff;
+    color: #f5ede0;
     font-family: 'Space Grotesk', sans-serif;
     line-height: 1.7;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
+  ::-webkit-scrollbar { width: 8px; }
+  ::-webkit-scrollbar-track { background: #1f1a14; }
+  ::-webkit-scrollbar-thumb { background: var(--saffron); border-radius: 12px; }
+
+  /* Navigation */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 5vw;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid #222;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5vw;
+    background: rgba(5, 3, 2, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 140, 66, 0.4);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
   }
-
-  .nav-logo { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; }
-  .nav-logo span { color: var(--saffron); }
+  .nav-logo {
+    font-size: 1.7rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    background: linear-gradient(135deg, #fff3e0, var(--saffron));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .nav-logo span { color: var(--saffron); background: none; }
 
   .lang-switch {
-    display: flex; background: #222; padding: 4px; border-radius: 50px;
+    display: flex;
+    background: #2a221c;
+    padding: 5px;
+    border-radius: 50px;
+    gap: 6px;
   }
   .lang-btn {
-    padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    padding: 5px 18px;
+    border-radius: 40px;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #e2cfb3;
+    transition: 0.2s;
   }
-  .lang-btn.active { background: var(--saffron); color: black; }
+  .lang-btn.active {
+    background: var(--saffron);
+    color: #0a0704;
+    box-shadow: 0 0 10px rgba(255,140,66,0.6);
+  }
 
+  /* Hero Section */
   #hero {
     min-height: 100vh;
-    display: flex; align-items: center;
-    padding: 110px 5vw 100px;
-    background: linear-gradient(180deg, #0a0a0a, #1a0f00);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 130px 6vw 100px;
+    background: radial-gradient(circle at 20% 40%, #2a1c12, #050302 85%);
     position: relative;
   }
-
-  .hero-content { max-width: 620px; z-index: 2; }
-  .hero-content h1 { font-size: clamp(2.8rem, 8.5vw, 6.5rem); font-weight: 800; line-height: 1.05; }
-
-  .hero-image {
-    position: absolute;
-    right: 5%;
-    bottom: 12%;
-    width: 38%;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 0 100px rgba(255,153,51,0.5);
+  .hero-content { flex: 1.2; min-width: 280px; z-index: 2; }
+  .hero-content h1 { font-size: clamp(2.8rem, 7vw, 6rem); font-weight: 800; font-family: 'Syne', sans-serif; line-height: 1.1; }
+  .hero-content p { margin: 1.6rem 0 2rem; font-size: 1.15rem; border-left: 4px solid var(--saffron); padding-left: 1.5rem; }
+  .hero-image { flex: 0.9; display: flex; justify-content: center; filter: drop-shadow(0 20px 30px #000); }
+  .hero-image img {
+    width: 100%; max-width: 360px; border-radius: 40px;
+    object-fit: cover; aspect-ratio: 1 / 1.2;
+    box-shadow: 0 0 45px rgba(255,140,66,0.5);
+    border: 1px solid rgba(247,200,115,0.4);
+    transition: 0.4s;
   }
-  .hero-image img { width: 100%; display: block; }
+  .btn-primary {
+    background: linear-gradient(100deg, var(--saffron), #c05e1a);
+    color: #0a0500;
+    padding: 1rem 2.8rem;
+    border-radius: 60px;
+    font-weight: 800;
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 8px 18px rgba(255,140,66,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-4px); box-shadow: 0 15px 28px rgba(255,140,66,0.5); }
 
-  section { padding: 7rem 5vw 5rem; }
-  .section-label { color: var(--saffron); font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
+  /* section style */
+  section { padding: 5rem 5vw; }
+  .section-label { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 600; margin-bottom: 0.8rem; }
+  h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 700; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
 
+  /* Book Grid Massive */
   .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2.2rem;
+    margin-top: 1.5rem;
   }
-
   .book-card {
     background: var(--card);
-    border-radius: 20px;
+    border-radius: 32px;
     overflow: hidden;
-    transition: all 0.4s;
+    transition: 0.35s ease;
+    border: 1px solid #3a2c20;
+    backdrop-filter: blur(2px);
   }
-  .book-card:hover { transform: translateY(-12px); box-shadow: 0 0 60px rgba(255,153,51,0.4); }
+  .book-card:hover { transform: translateY(-10px); border-color: var(--saffron); box-shadow: 0 20px 35px -8px rgba(255,140,66,0.4); }
+  .book-img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    transition: 0.4s;
+  }
+  .book-content { padding: 1.5rem; }
+  .book-content h3 { font-size: 1.7rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+  .audio-player audio { width: 100%; margin-top: 1rem; border-radius: 60px; background: #2a241e; }
+  .vedic-badge { font-size: 0.7rem; background: rgba(255,140,66,0.2); display: inline-block; padding: 4px 12px; border-radius: 30px; margin-top: 8px; }
 
+  /* Quote Gallery */
+  .quotes-section { background: linear-gradient(145deg, #0c0805, #030101); text-align: center; }
+  .quote-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2.5rem; }
+  .quote-card { background: rgba(25, 19, 14, 0.7); backdrop-filter: blur(10px); padding: 2rem; border-radius: 36px; max-width: 320px; border-left: 5px solid var(--gold); font-style: italic; font-weight: 500; }
+
+  /* bottom mobile nav */
   .bottom-nav {
     position: fixed; bottom: 0; left: 0; right: 0;
-    background: rgba(10,10,10,0.98);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid #222;
-    display: none;
-    z-index: 1000;
+    background: rgba(5, 3, 2, 0.96); backdrop-filter: blur(24px);
+    border-top: 1px solid #ff8c4244;
+    display: none; z-index: 1000; padding: 0.6rem 0;
   }
-  .bottom-nav ul {
-    display: flex; justify-content: space-around; list-style: none; padding: 10px 0;
-  }
-  .bottom-nav a {
-    color: #aaa;
-    text-align: center;
-    font-size: 0.78rem;
-    text-decoration: none;
-  }
-  .bottom-nav a.active { color: var(--saffron); }
+  .bottom-nav ul { display: flex; justify-content: space-around; list-style: none; }
+  .bottom-nav a { color: #cbbfa7; text-decoration: none; font-size: 0.8rem; font-weight: 500; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .bottom-nav a.active { color: var(--saffron); text-shadow: 0 0 5px rgba(255,140,66,0.5); }
+  footer { background: #040202; padding: 2rem 5vw; text-align: center; border-top: 1px solid #332415; font-size: 0.85rem; }
 
-  @media (max-width: 768px) {
-    .hero-image { position: relative; width: 85%; margin: 3rem auto 0; right: auto; }
-    .hero-content { text-align: center; }
+  @media (max-width: 780px) {
+    #hero { flex-direction: column-reverse; text-align: center; padding-top: 100px; }
+    .hero-content p { border-left: none; text-align: center; padding-left: 0; }
     .bottom-nav { display: block; }
+    .btn-primary { margin: 0 auto; }
   }
+  .lang-ne { display: none; }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">GAURAB <span>ॐ</span></a>
+  <a href="#hero" class="nav-logo">GAURAB <span>ॐ</span> BARAKOTI</a>
   <div class="lang-switch">
     <button onclick="switchLanguage('en')" class="lang-btn active" id="btn-en">EN</button>
-    <button onclick="switchLanguage('ne')" class="lang-btn" id="btn-ne">ने</button>
+    <button onclick="switchLanguage('ne')" class="lang-btn" id="btn-ne">नेपाली</button>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- Hero Section -->
 <section id="hero">
   <div class="hero-content">
-    <div class="section-label lang-en">SANATAN DHARMA • VEDIC WISDOM</div>
-    <div class="section-label lang-ne" style="display:none;">सनातन धर्म • वैदिक ज्ञान</div>
-    
+    <div class="section-label lang-en">📿 सनातन धर्म ग्रन्थ मण्डप 📿</div>
+    <div class="section-label lang-ne" style="display:none;">📿 सनातन धर्म ग्रन्थ मण्डप 📿</div>
     <h1>Gaurab <span style="color:var(--saffron);">Barakoti</span></h1>
-    
-    <p class="lang-en" style="margin:1.6rem 0 2.5rem; font-size:1.1rem; color:#ddd;">
-      A dedicated Sanatan Dharma content creator spreading the eternal wisdom of the Vedas, 
-      Bhagavad Gita, Upanishads and spiritual living.
-    </p>
-    <p class="lang-ne" style="margin:1.6rem 0 2.5rem; font-size:1.1rem; color:#ddd; display:none;">
-      सनातन धर्मको अमर ज्ञानलाई आधुनिक माध्यमबाट फैलाउने समर्पित साधक।
-    </p>
-
-    <a href="#books" style="background:var(--saffron); color:black; padding:1.3rem 3.2rem; border-radius:14px; font-weight:700; display:inline-block;">
-      LISTEN TO SACRED TEXTS
-    </a>
+    <p class="lang-en">Complete Digital Treasury of Vedas, Upanishads, Puranas & Gita — Eternal Wisdom in Audio & Sacred Imagery. Explore the divine vibrations of Sanatan Dharma.</p>
+    <p class="lang-ne" style="display:none;">वेद, उपनिषद्, पुराण र गीताको सम्पूर्ण डिजिटल खजाना — शाश्वत ज्ञान र अडियो ध्यान। सनातन धर्मको दिव्य कम्पन अनुभव गर्नुहोस्।</p>
+    <a href="#all-scriptures" class="btn-primary lang-en">🔱 EXPLORE ALL 108+ SCRIPTURES 🔱</a>
+    <a href="#all-scriptures" class="btn-primary lang-ne" style="display:none;">🔱 सबै शास्त्र पढ्नुहोस् 🔱</a>
   </div>
-
   <div class="hero-image">
-    <img src="IMG_3015.JPG" alt="Gaurab Barakoti">
+    <img src="IMG_3015.JPG" alt="Gaurab Barakoti Sanatan Yogi" onerror="this.src='https://placehold.co/500x600/1f1a14/ff8c42?text=Gaurab+Barakoti'">
   </div>
 </section>
 
-<!-- Sacred Books -->
-<section id="books" style="background:var(--surface);">
-  <div class="section-label">SACRED TEXTS & AUDIO</div>
-  <h2>Listen to Vedas, Gita & Puranas</h2>
-
+<!-- Complete Scriptures Section: Vedas + Upanishads + Puranas + Gita -->
+<section id="all-scriptures" style="background: var(--surface);">
+  <div class="section-label lang-en">🎧 SHABDA BRAHMA - DIVINE AUDIO LIBRARY 🎧</div>
+  <div class="section-label lang-ne" style="display:none;">🎧 शब्द ब्रह्म - दिव्य अडियो पुस्तकालय 🎧</div>
+  <h2 class="lang-en">Complete Collection: 4 Vedas, Principal Upanishads, Puranas & Gita</h2>
+  <h2 class="lang-ne" style="display:none;">सम्पूर्ण संग्रह: चार वेद, मुख्य उपनिषद्, पुराण र गीता</h2>
+  
   <div class="books-grid">
+    <!-- Bhagavad Gita - Complete -->
     <div class="book-card">
-      <img src="https://i.pinimg.com/474x/41/85/d9/4185d9e412ae68da8953a332750c1600.jpg" alt="Bhagavad Gita">
-      <div class="content" style="padding:1.5rem;">
-        <h3>Bhagavad Gita</h3>
-        <audio controls style="width:100%; margin:1rem 0;">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/BhagavadGita-19thcentury.jpg/800px-BhagavadGita-19thcentury.jpg" alt="Bhagavad Gita">
+      <div class="book-content">
+        <h3>📖 Bhagavad Gītā</h3>
+        <p class="lang-en">The Song of God – Sri Krishna's ultimate counsel. Complete chapter recitation.</p>
+        <p class="lang-ne" style="display:none;">भगवान श्रीकृष्णको परम उपदेश। पूर्ण अडियो पाठ।</p>
+        <audio controls preload="metadata">
           <source src="https://archive.org/download/SrimadBhagavadGita_201712/Srimad%20Bhagavad%20Gita.mp3" type="audio/mpeg">
+        </audio>
+        <div class="vedic-badge">📿 18 Chapters | 700 Shlokas</div>
+      </div>
+    </div>
+
+    <!-- Rig Veda -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Rigveda_MS_2097.jpg/800px-Rigveda_MS_2097.jpg" alt="Rig Veda">
+      <div class="book-content">
+        <h3>🕉️ Ṛg Veda</h3>
+        <p class="lang-en">The oldest Veda – hymns of cosmic creation, Agni, Indra, Surya. Authentic chanting.</p>
+        <p class="lang-ne" style="display:none;">प्राचीनतम वेद – सृष्टि र देवताका सूक्तहरू।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/rigveda/rv01-001.mp3" type="audio/mpeg">
+        </audio>
+        <div class="vedic-badge">🔱 Mandala 1 | Sukta 1 | Agni</div>
+      </div>
+    </div>
+
+    <!-- Yajur Veda -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Yajurveda.jpg/640px-Yajurveda.jpg" alt="Yajur Veda">
+      <div class="book-content">
+        <h3>⚜️ Yajur Veda</h3>
+        <p class="lang-en">Prose & mantras for rituals – the Karma Kanda wisdom.</p>
+        <p class="lang-ne" style="display:none;">यज्ञ र अनुष्ठानका मन्त्र – कर्मकाण्डको ज्ञान।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/yajurveda/taittiriya-samhita-1.1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Sama Veda -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Samaveda.jpg/640px-Samaveda.jpg" alt="Sama Veda">
+      <div class="book-content">
+        <h3>🎵 Sāma Veda</h3>
+        <p class="lang-en">Melodic hymns – the root of Indian classical music & devotion.</p>
+        <p class="lang-ne" style="display:none;">सुमधुर सामगान – भारतीय संगीतको मूल।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/samaveda/gramageya1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Atharva Veda -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Atharvaveda_palmleaf.jpg/640px-Atharvaveda_palmleaf.jpg" alt="Atharva Veda">
+      <div class="book-content">
+        <h3>🌿 Atharva Veda</h3>
+        <p class="lang-en">Veda of daily life, healing, and spiritual protection.</p>
+        <p class="lang-ne" style="display:none;">आयुर्वेद, रक्षा र जीवनोपयोगी मन्त्र।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/atharvaveda/av1-1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Isha Upanishad -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Isha_Upanishad_manuscript.jpg/640px-Isha_Upanishad_manuscript.jpg" alt="Isha Upanishad">
+      <div class="book-content">
+        <h3>✨ Īśa Upaniṣad</h3>
+        <p class="lang-en">"All this is enveloped by the Lord" – essence of non-duality.</p>
+        <p class="lang-ne" style="display:none;">"ईशावास्यमिदं सर्वम्" – अद्वैतको सार।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/rigveda/ishavasyam.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Katha Upanishad -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nachiketa_and_Yama.jpg/640px-Nachiketa_and_Yama.jpg" alt="Katha Upanishad">
+      <div class="book-content">
+        <h3>🔥 Kaṭha Upaniṣad</h3>
+        <p class="lang-en">Nachiketa's dialogue with Yama – secret of death & immortality.</p>
+        <p class="lang-ne" style="display:none">नचिकेता र यमको संवाद – मृत्यु र अमरत्वको रहस्य।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/katha/katha1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Chhandogya Upanishad -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Chandogya_Upanishad_manuscript_leaf.jpg/640px-Chandogya_Upanishad_manuscript_leaf.jpg" alt="Chhandogya">
+      <div class="book-content">
+        <h3>🪔 Chhāndogya Upaniṣad</h3>
+        <p class="lang-en">Tat Tvam Asi – That Thou Art, supreme mahavakya.</p>
+        <p class="lang-ne" style="display:none;">तत् त्वम् असि – महावाक्यको गहन ज्ञान।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/chandogya/chandogya6.1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Shrimad Bhagavata Purana -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Bhagavata_Purana_manuscript.jpg/640px-Bhagavata_Purana_manuscript.jpg" alt="Bhagavata Purana">
+      <div class="book-content">
+        <h3>💙 Śrīmad Bhāgavatam</h3>
+        <p class="lang-en">Stories of Krishna, Bhakti, and divine pastimes. Eternal nectar.</p>
+        <p class="lang-ne" style="display:none;">कृष्णलीला, भक्ति रस र आख्यान।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/bhagavatam/bhag1.1.mp3" type="audio/mpeg">
+        </audio>
+        <div class="vedic-badge">🌟 12 Skandhas | Supreme Purana</div>
+      </div>
+    </div>
+
+    <!-- Shiva Purana -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Shiva_Purana_Sanskrit_script.jpg/640px-Shiva_Purana_Sanskrit_script.jpg" alt="Shiva Purana">
+      <div class="book-content">
+        <h3>🔱 Śiva Purāṇa</h3>
+        <p class="lang-en">Glory of Lord Shiva, Rudra, and cosmic dissolution.</p>
+        <p class="lang-ne" style="display:none;">भगवान शिवको महिमा, रुद्र र लय।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/shivapurana/shiva1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Vishnu Purana -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Vishnu_Purana_manuscript.jpg/640px-Vishnu_Purana_manuscript.jpg" alt="Vishnu Purana">
+      <div class="book-content">
+        <h3>🐚 Viṣṇu Purāṇa</h3>
+        <p class="lang-en">Preserver aspect, cosmic incarnations, and dharma.</p>
+        <p class="lang-ne" style="display:none;">विष्णुका अवतार र लीलाहरू।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/vishnupurana/vishnu1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Devi Mahatmya (Chandi) -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Devi_Mahatmya_manuscript.jpg/640px-Devi_Mahatmya_manuscript.jpg" alt="Devi Mahatmya">
+      <div class="book-content">
+        <h3>🌺 Devī Māhātmyam</h3>
+        <p class="lang-en">Durga Saptashati – Glory of the Divine Mother.</p>
+        <p class="lang-ne" style="display:none;">दुर्गा सप्तशती – आदिशक्तिको महिमा।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/devi/devi1.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+    </div>
+
+    <!-- Mandukya Upanishad -->
+    <div class="book-card">
+      <img class="book-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Om_symbol.svg/640px-Om_symbol.svg.png" alt="Mandukya">
+      <div class="book-content">
+        <h3>🕉️ Māṇḍūkya Upaniṣad</h3>
+        <p class="lang-en">The sacred syllable OM – four states of consciousness.</p>
+        <p class="lang-ne" style="display:none;">ॐ र चेतनाका चार अवस्थाहरू।</p>
+        <audio controls>
+          <source src="https://www.sanskritweb.net/mandukya/mandukya1.mp3" type="audio/mpeg">
         </audio>
       </div>
     </div>
   </div>
+
+  <div style="text-align: center; margin-top: 3rem;">
+    <p class="lang-en" style="color: var(--gold); font-size: 1rem;">✨ 12+ Major Scriptures | Authentic Vedic Chants | Daily Updated ✨</p>
+    <p class="lang-ne" style="display:none; color: var(--gold);">✨ १२ भन्दा बढी प्रमुख ग्रन्थहरू | प्रामाणिक वैदिक मन्त्र ✨</p>
+  </div>
 </section>
 
-<!-- Bottom Navigation -->
+<!-- Wisdom & Quotes from Scriptures -->
+<section class="quotes-section">
+  <div class="section-label lang-en">📜 UPANISHADIC VAKYAMRITAM 📜</div>
+  <div class="section-label lang-ne" style="display:none;">📜 उपनिषद् वाक्यामृतम् 📜</div>
+  <h2 class="lang-en">Eternal Verses that Transform</h2>
+  <h2 class="lang-ne" style="display:none;">परिवर्तन ल्याउने शाश्वत श्लोकहरू</h2>
+  <div class="quote-grid">
+    <div class="quote-card">“Aham Brahmasmi” – I am Brahman (Brihadaranyaka Upanishad)<div class="lang-ne" style="display:none;">“अहं ब्रह्मास्मि” – म नै ब्रह्म हुँ ।</div></div>
+    <div class="quote-card">“Tat Tvam Asi” – You are That (Chandogya Upanishad)<div class="lang-ne" style="display:none;">“तत् त्वम् असि” – ती नै तिमी हौ ।</div></div>
+    <div class="quote-card">“Vasudhaiva Kutumbakam” – World is one family (Maha Upanishad)<div class="lang-ne" style="display:none;">“वसुधैव कुटुम्बकम्” – विश्व एउटै परिवार ।</div></div>
+  </div>
+</section>
+
+<footer>
+  <p class="lang-en">🕉️ Dedicated to preserving Vedic Heritage | Gaurab Barakoti - Sanatan Dharma Yoddha 🚩</p>
+  <p class="lang-ne" style="display:none;">🕉️ वैदिक सम्पदा संरक्षणमा समर्पित | गौरव बराकोटी - सनातन योद्धा 🚩</p>
+  <div style="margin-top: 1rem; font-size: 0.7rem;">ॐ पूर्णमदः पूर्णमिदम् | All Audio rights for spiritual & non-commercial use</div>
+</footer>
+
 <div class="bottom-nav">
   <ul>
-    <li><a href="#hero" class="active">🏠 Home</a></li>
-    <li><a href="#books">🎧 Listen</a></li>
-    <li><a href="#">📸 Work</a></li>
+    <li><a href="#hero">🏠 <span class="lang-en">Home</span><span class="lang-ne" style="display:none;">गृह</span></a></li>
+    <li><a href="#all-scriptures">📖 <span class="lang-en">Scriptures</span><span class="lang-ne" style="display:none;">शास्त्र</span></a></li>
+    <li><a href="#all-scriptures">🎧 <span class="lang-en">Audio</span><span class="lang-ne" style="display:none;">श्रवण</span></a></li>
   </ul>
 </div>
 
 <script>
   function switchLanguage(lang) {
-    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
-    document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? 'block' : 'none');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
+    const allEn = document.querySelectorAll('.lang-en');
+    const allNe = document.querySelectorAll('.lang-ne');
+    if (lang === 'en') {
+      allEn.forEach(el => el.style.display = '');
+      allNe.forEach(el => el.style.display = 'none');
+      document.getElementById('btn-en')?.classList.add('active');
+      document.getElementById('btn-ne')?.classList.remove('active');
+    } else {
+      allEn.forEach(el => el.style.display = 'none');
+      allNe.forEach(el => el.style.display = '');
+      document.getElementById('btn-ne')?.classList.add('active');
+      document.getElementById('btn-en')?.classList.remove('active');
+    }
+    const heroBtnEn = document.querySelector('.hero-content .btn-primary.lang-en');
+    const heroBtnNe = document.querySelector('.hero-content .btn-primary.lang-ne');
+    if(heroBtnEn && heroBtnNe){
+      heroBtnEn.style.display = lang === 'en' ? 'inline-block' : 'none';
+      heroBtnNe.style.display = lang === 'ne' ? 'inline-block' : 'none';
+    }
   }
-
-  switchLanguage('en');
+  // mobile active sync
+  function setActiveBottom(){
+    let sections = document.querySelectorAll('section');
+    let scrollPos = window.scrollY + 100;
+    let activeId = '#hero';
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      const bottom = top + sec.offsetHeight;
+      if(scrollPos >= top && scrollPos < bottom) activeId = '#' + sec.id;
+    });
+    document.querySelectorAll('.bottom-nav a').forEach(link => {
+      link.classList.remove('active');
+      if(link.getAttribute('href') === activeId) link.classList.add('active');
+    });
+  }
+  window.addEventListener('scroll', setActiveBottom);
+  window.addEventListener('load', () => {
+    switchLanguage('en');
+    setActiveBottom();
+    // smooth anchor for bottom nav
+    document.querySelectorAll('.bottom-nav a, nav a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e){
+        const targetId = this.getAttribute('href');
+        if(targetId && targetId !== '#'){
+          const target = document.querySelector(targetId);
+          if(target){
+            e.preventDefault();
+            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            history.pushState(null,null,targetId);
+          }
+        }
+      });
+    });
+  });
 </script>
 </body>
 </html>
