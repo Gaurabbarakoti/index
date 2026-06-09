@@ -1,348 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Gaurab Barakoti | Complete Sanatan Dharma Library | Vedas, Upanishads, Puranas, Gita</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:wght@400;700;800;900&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gaurab Barakoti | Sanatan Dharma Library</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --black: #050302;
-    --surface: #0e0b08;
-    --card: #19130e;
-    --saffron: #ff8c42;
-    --gold: #f7c873;
-    --green: #2ecc71;
-  }
-  body {
-    background: var(--black);
-    color: #f5ede0;
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.7;
-    scroll-behavior: smooth;
-  }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #1f1a14; }
-  ::-webkit-scrollbar-thumb { background: var(--saffron); border-radius: 12px; }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 5vw;
-    background: rgba(5, 3, 2, 0.95);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 140, 66, 0.4);
-  }
-  .nav-logo {
-    font-size: 1.7rem; font-weight: 800;
-    background: linear-gradient(135deg, #fff3e0, var(--saffron));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .lang-switch {
-    display: flex; background: #2a221c; padding: 5px; border-radius: 50px; gap: 6px;
-  }
-  .lang-btn {
-    padding: 5px 18px; border-radius: 40px; font-weight: 600; cursor: pointer;
-    background: transparent; border: none; color: #e2cfb3;
-  }
-  .lang-btn.active { background: var(--saffron); color: #0a0704; }
-
-  #hero {
-    min-height: 100vh;
-    display: flex; align-items: center; flex-wrap: wrap;
-    padding: 130px 6vw 100px;
-    background: radial-gradient(circle at 20% 40%, #2a1c12, #050302 85%);
-  }
-  .hero-content { flex: 1.2; min-width: 280px; }
-  .hero-content h1 { font-size: clamp(2.8rem, 7vw, 5rem); font-family: 'Syne', sans-serif; }
-  .hero-content p { margin: 1.6rem 0 2rem; border-left: 4px solid var(--saffron); padding-left: 1.5rem; }
-  .hero-image { flex: 0.9; display: flex; justify-content: center; }
-  .hero-image img { width: 100%; max-width: 340px; border-radius: 40px; box-shadow: 0 0 45px rgba(255,140,66,0.5); }
-  .btn-primary {
-    background: linear-gradient(100deg, var(--saffron), #c05e1a);
-    color: #0a0500; padding: 1rem 2.8rem; border-radius: 60px;
-    font-weight: 800; display: inline-block; text-decoration: none;
-  }
-
-  section { padding: 5rem 5vw; }
-  .section-label { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.25em; margin-bottom: 0.8rem; }
-  h2 { font-size: clamp(2rem, 4.5vw, 2.8rem); font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
-
-  .search-box {
-    max-width: 500px; margin: 1rem auto 2rem;
-    display: flex; background: var(--card); border-radius: 60px; padding: 5px 15px; border: 1px solid var(--saffron);
-  }
-  .search-box input {
-    flex: 1; background: transparent; border: none; padding: 14px; color: inherit; outline: none;
-  }
-  .category-tabs {
-    display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;
-  }
-  .cat-btn {
-    background: #1f1a14; border: none; padding: 0.8rem 1.8rem; border-radius: 50px;
-    color: #e2cfb3; font-weight: 600; cursor: pointer;
-  }
-  .cat-btn i { margin-right: 8px; }
-  .cat-btn.active { background: var(--saffron); color: #0a0704; }
-
-  .books-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-    gap: 2rem;
-  }
-  .book-card {
-    background: var(--card);
-    border-radius: 28px;
-    overflow: hidden;
-    border: 1px solid #3a2c20;
-    transition: 0.3s;
-  }
-  .book-card:hover { transform: translateY(-8px); border-color: var(--saffron); }
-  .book-img {
-    width: 100%; height: 200px; object-fit: cover;
-  }
-  .book-content { padding: 1.5rem; }
-  .book-content h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-  .custom-audio { margin: 1rem 0; background: #2a241e; border-radius: 40px; padding: 8px 12px; }
-  .custom-audio audio { width: 100%; border-radius: 40px; }
-  .btn-read {
-    background: rgba(255,140,66,0.2); border: 1px solid var(--saffron);
-    color: var(--saffron); padding: 10px; border-radius: 40px;
-    cursor: pointer; width: 100%; margin-top: 12px;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
-  }
-  .btn-read:hover { background: var(--saffron); color: #0a0704; }
-
-  .modal {
-    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.96); z-index: 2000; overflow-y: auto; padding: 2rem;
-  }
-  .modal-content {
-    max-width: 800px; margin: 2rem auto; background: #1a1510;
-    border-radius: 32px; padding: 2rem; border: 1px solid var(--saffron);
-    position: relative; max-height: 85vh; overflow-y: auto;
-  }
-  .modal-close {
-    position: absolute; top: 20px; right: 25px; font-size: 2rem;
-    cursor: pointer; color: var(--saffron); background: none; border: none;
-  }
-  .modal-text { line-height: 1.8; white-space: pre-wrap; }
-  .modal-text h3 { color: var(--gold); margin: 1rem 0; }
-  .modal-text p { margin-bottom: 1rem; }
-
-  .bottom-nav {
-    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-    background: rgba(5,3,2,0.96); backdrop-filter: blur(24px);
-    border: 1px solid rgba(255,140,66,0.3); border-radius: 60px;
-    display: flex; z-index: 1000; padding: 0.5rem 1.2rem; gap: 0.8rem;
-  }
-  .bottom-nav a {
-    color: #cbbfa7; text-decoration: none; display: flex; flex-direction: column;
-    align-items: center; gap: 4px; padding: 8px 18px; border-radius: 50px;
-  }
-  .bottom-nav a i { font-size: 1.2rem; }
-  .bottom-nav a.active, .bottom-nav a:hover { background: var(--saffron); color: #0a0704; }
-
-  footer { background: #040202; padding: 2rem; text-align: center; border-top: 1px solid #332415; }
-  .social-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
-  .social-links a { color: var(--saffron); font-size: 1.5rem; }
-
-  @media (max-width: 780px) {
-    #hero { flex-direction: column-reverse; text-align: center; }
-    .hero-content p { border-left: none; text-align: center; padding-left: 0; }
-    .bottom-nav { padding: 0.3rem 0.8rem; gap: 0.2rem; }
-    .bottom-nav a { padding: 6px 12px; }
-    .books-grid { grid-template-columns: 1fr; }
-  }
-  .lang-ne { display: none; }
-  .quote-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin-top: 2rem; }
-  .quote-card { background: rgba(25,19,14,0.7); padding: 1.5rem; border-radius: 28px; max-width: 280px; border-left: 4px solid var(--gold); }
+    body { background-color: #050302; color: #f5ede0; font-family: sans-serif; margin: 0; padding: 20px; }
+    .book-card { background: #19130e; padding: 20px; margin-bottom: 20px; border-radius: 15px; border: 1px solid #333; }
+    h3 { color: #ff8c42; margin-top: 0; }
+    button { background: #ff8c42; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer; font-weight: bold; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); padding: 20px; overflow-y: auto; }
+    .modal-content { max-width: 600px; margin: 50px auto; background: #1a1510; padding: 25px; border-radius: 20px; }
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#hero" class="nav-logo">GAURAB <span style="color:#ff8c42;">ॐ</span> BARAKOTI</a>
-  <div class="lang-switch">
-    <button onclick="switchLanguage('en')" class="lang-btn active" id="btn-en">EN</button>
-    <button onclick="switchLanguage('ne')" class="lang-btn" id="btn-ne">नेपाली</button>
-  </div>
-</nav>
+<div id="app">
+    <div style="text-align: center;">
+        <h1>GAURAB ॐ BARAKOTI</h1>
+        <button onclick="changeLang('en')">EN</button>
+        <button onclick="changeLang('ne')">नेपाली</button>
+    </div>
 
-<section id="hero">
-  <div class="hero-content">
-    <div class="section-label lang-en">📿 सनातन धर्म ग्रन्थ मण्डप 📿</div>
-    <div class="section-label lang-ne" style="display:none;">📿 सनातन धर्म ग्रन्थ मण्डप 📿</div>
-    <h1>Gaurab <span style="color:#ff8c42;">Barakoti</span></h1>
-    <p class="lang-en">Complete Digital Library of 4 Vedas, 10+ Upanishads, 6 Puranas & Bhagavad Gita. Listen to authentic chants and read full scriptures in English & Nepali.</p>
-    <p class="lang-ne" style="display:none;">४ वेद, १०+ उपनिषद्, ६ पुराण र भगवद् गीताको सम्पूर्ण डिजिटल पुस्तकालय। प्रामाणिक मन्त्र सुन्नुहोस् र पूरा शास्त्र पढ्नुहोस्।</p>
-    <a href="#all-scriptures" class="btn-primary lang-en">🔱 EXPLORE ALL 20+ SCRIPTURES 🔱</a>
-    <a href="#all-scriptures" class="btn-primary lang-ne" style="display:none;">🔱 सबै २०+ शास्त्र हेर्नुहोस् 🔱</a>
-  </div>
-  <div class="hero-image">
-    <img src="IMG_3015.JPG" alt="Gaurab Barakoti" onerror="this.src='https://placehold.co/500x600/1f1a14/ff8c42?text=Gaurab'">
-  </div>
-</section>
-
-<section id="all-scriptures" style="background: var(--surface);">
-  <div class="section-label">🎧 LISTEN & READ FULL TEXTS 🎧</div>
-  <h2>Complete Vedic Library</h2>
-
-  <div class="search-box">
-    <i class="fas fa-search" style="color:var(--saffron); align-self:center;"></i>
-    <input type="text" id="searchInput" placeholder="🔍 Search: Rig Veda, Gita, Isha Upanishad, Shiva Purana..." onkeyup="searchBooks()">
-  </div>
-
-  <div class="category-tabs">
-    <button class="cat-btn active" data-cat="all"><i class="fas fa-om"></i> सबै</button>
-    <button class="cat-btn" data-cat="vedas"><i class="fas fa-fire"></i> ४ वेद</button>
-    <button class="cat-btn" data-cat="upanishads"><i class="fas fa-brain"></i> उपनिषद्</button>
-    <button class="cat-btn" data-cat="puranas"><i class="fas fa-book-open"></i> पुराण</button>
-    <button class="cat-btn" data-cat="gita"><i class="fas fa-hands-praying"></i> गीता</button>
-  </div>
-
-  <div class="books-grid" id="booksContainer"></div>
-</section>
-
-<div id="readingModal" class="modal">
-  <div class="modal-content">
-    <button class="modal-close" onclick="closeModal()">&times;</button>
-    <div id="modalTitle" class="modal-title" style="font-size:1.8rem; color:var(--saffron);"></div>
-    <div id="modalText" class="modal-text"></div>
-  </div>
+    <div id="bookList"></div>
 </div>
 
-<section style="background: linear-gradient(145deg, #0c0805, #030101); text-align: center; padding: 3rem 5vw;">
-  <div class="section-label">📜 ETERNAL WISDOM 📜</div>
-  <div class="quote-grid">
-    <div class="quote-card">“Aham Brahmasmi” – I am Brahman<br><small>Brihadaranyaka Upanishad</small></div>
-    <div class="quote-card">“Tat Tvam Asi” – You are That<br><small>Chandogya Upanishad</small></div>
-    <div class="quote-card">“Vasudhaiva Kutumbakam” – World is one family<br><small>Maha Upanishad</small></div>
-    <div class="quote-card">“Satyameva Jayate” – Truth alone triumphs<br><small>Mundaka Upanishad</small></div>
-  </div>
-</section>
-
-<footer>
-  <div class="social-links">
-    <a href="#"><i class="fab fa-instagram"></i></a>
-    <a href="#"><i class="fab fa-youtube"></i></a>
-    <a href="#"><i class="fab fa-facebook"></i></a>
-  </div>
-  <p>🕉️ Dedicated to preserving Vedic Heritage | Gaurab Barakoti - Sanatan Dharma 🚩</p>
-  <p style="font-size:0.7rem;">Complete Scriptures with Audio & Full Text | 20+ Books</p>
-</footer>
-
-<div class="bottom-nav">
-  <a href="#hero"><i class="fas fa-home"></i><span>गृह</span></a>
-  <a href="#all-scriptures"><i class="fas fa-book"></i><span>शास्त्र</span></a>
-  <a href="#all-scriptures"><i class="fas fa-headphones"></i><span>श्रवण</span></a>
-  <a href="#" id="quoteNavBtn"><i class="fas fa-quote-right"></i><span>उद्धरण</span></a>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <button onclick="closeModal()">Close</button>
+        <h2 id="modalTitle"></h2>
+        <p id="modalBody"></p>
+    </div>
 </div>
 
 <script>
-  // COMPLETE 20+ SCRIPTURES WITH FULL TEXT
-  const booksData = [
-    // 4 VEDAS
-    { name: "🕉️ Ṛg Veda (ऋग्वेद)", category: "vedas", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Rigveda_MS_2097.jpg/800px-Rigveda_MS_2097.jpg", desc_en: "The oldest Veda - hymns of Agni, Indra, Surya.", desc_ne: "सबैभन्दा पुरानो वेद - अग्नि, इन्द्र, सूर्यका सूक्तहरू।", audio: "https://ia801307.us.archive.org/18/items/RigVeda_201712/Rig%20Veda/RigVeda1.mp3", badge: "Mandala 1 Sukta 1",
-      text_en: "॥ अग्निमीळे पुरोहितं ॥\n\n1. I praise Agni, the household priest, the divine minister of the sacrifice, the invoker, the best bestower of treasure.\n\n2. Agni is worthy of praise by ancient and modern sages; he shall bring the gods here.\n\n3. Through Agni one obtains wealth, increasing day by day, glorious and abundant heroic sons.\n\n4. O Agni, the sacrifice which you encompass on all sides, that alone goes to the gods.\n\n5. May Agni, the wise invoker, offer this sacrifice with true devotion to the gods.\n\n6. For you, O Agni, we seek with reverence day by day, bringing our obeisance to you in the morning and evening.\n\n7. You are the protector of the sacred law, the radiant one, increasing in your own home.\n\n8. Be easy for us to reach, like a father to his son; abide with us, O Agni, for our welfare.",
-      text_ne: "॥ अग्निमीळे पुरोहितं ॥\n\n१. म अग्नि, यज्ञका पुरोहित, ऋत्विज देवताको स्तुति गर्दछु।\n\n२. अग्नि पुरातन र नवीन ऋषिहरूद्वारा प्रशंसा योग्य छन्।\n\n३. अग्निबाट धन, वीर पुत्र र महिमा प्राप्त हुन्छ।\n\n४. हे अग्नि, तपाईंले चारैतिरबाट घेरिएको यज्ञ देवताहरूसम्म पुग्दछ।\n\n५. अग्नि, बुद्धिमान् आह्वानकर्ताले यो यज्ञ देवताहरूलाई अर्पण गर्छन्।\n\n६. हे अग्नि, हामी प्रतिदिन श्रद्धापूर्वक तपाईंको समीप आउँछौं।\n\n७. तपाईं पवित्र धर्मका रक्षक, तेजस्वी हुनुहुन्छ।\n\n८. हाम्रो लागि सहज बन्नुहोस्, पिता जस्तै पुत्रको लागि।" },
-    { name: "⚜️ Yajur Veda (यजुर्वेद)", category: "vedas", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Yajurveda.jpg/640px-Yajurveda.jpg", desc_en: "Rituals and formulas for sacrifice.", desc_ne: "यज्ञका विधि र मन्त्र।", audio: "https://ia801307.us.archive.org/18/items/RigVeda_201712/Yajur%20Veda/YajurVeda1.mp3", badge: "Taittiriya Samhita",
-      text_en: "॥ शुक्लां ब्रह्मविद्यां परमं यज्ञं ॥\n\nThe Yajur Veda contains the rituals and formulas for sacrifice. It guides the priest in performing Vedic ceremonies with precise mantras.\n\nEssence: 'Lead me from the unreal to the real, from darkness to light, from death to immortality.'\n\nAsato ma sad gamaya, Tamaso ma jyotir gamaya, Mrityor ma amritam gamaya.",
-      text_ne: "॥ शुक्लां ब्रह्मविद्यां परमं यज्ञं ॥\n\nयजुर्वेदमा यज्ञका विधिहरू र मन्त्रहरू छन्। यसले पुरोहितलाई वैदिक अनुष्ठानहरूमा मार्गदर्शन गर्छ।\n\nसार: 'मलाई असत्यबाट सत्यतर्फ, अध्यारोबाट उज्यालोतर्फ, मृत्युबाट अमरतातर्फ लैजानुहोस्।'\n\nअसतो मा सद्गमय, तमसो मा ज्योतिर्गमय, मृत्योर् मा अमृतं गमय।" },
-    { name: "🎵 Sāma Veda (सामवेद)", category: "vedas", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Samaveda.jpg/640px-Samaveda.jpg", desc_en: "Melodic hymns - source of Indian music.", desc_ne: "सुमधुर गान - भारतीय संगीतको उत्पत्ति।", audio: "https://ia801307.us.archive.org/18/items/RigVeda_201712/Sama%20Veda/SamaVeda1.mp3", badge: "Grama Geetam",
-      text_en: "The Sama Veda is the Veda of melodies and chants. It is the source of Indian classical music. The Saman (melodies) are sung during important rituals. The divine sound creates harmony between the individual and the cosmic consciousness.\n\nOm, the primordial sound, is the essence of all Samans.",
-      text_ne: "सामवेद मधुर गानको वेद हो। यो भारतीय शास्त्रीय संगीतको उत्पत्ति हो। सामान (गान) महत्वपूर्ण अनुष्ठानहरूमा गाइन्छ। दिव्य ध्वनिले व्यक्ति र ब्रह्माण्डीय चेतनाबीच सामंजस्य स्थापित गर्छ।\n\nॐ, आदिम ध्वनि, सबै सामको सार हो।" },
-    { name: "🌿 Atharva Veda (अथर्ववेद)", category: "vedas", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Atharvaveda_palmleaf.jpg/640px-Atharvaveda_palmleaf.jpg", desc_en: "Healing, protection, prosperity.", desc_ne: "आयुर्वेद, रक्षा, समृद्धि।", audio: "https://ia801307.us.archive.org/18/items/RigVeda_201712/Atharva%20Veda/AtharvaVeda1.mp3", badge: "Ayurveda Origin",
-      text_en: "Atharva Veda contains mantras for daily life, healing diseases, protection from evil forces, and prosperity. It includes the science of Ayurveda and addresses worldly problems with spiritual solutions.\n\nMay we be free from disease, live long, and attain prosperity.",
-      text_ne: "अथर्ववेदमा दैनिक जीवन, रोग निको पार्ने, दुष्ट शक्तिबाट रक्षा र समृद्धिको मन्त्र छन्। यसमा आयुर्वेदको ज्ञान र आध्यात्मिक समाधान समावेश छ।\n\nहामी रोगमुक्त, दीर्घायु र समृद्ध बनौं।" },
-    // UPANISHADS
-    { name: "✨ Īśa Upaniṣad (ईशा उपनिषद्)", category: "upanishads", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Isha_Upanishad_manuscript.jpg/640px-Isha_Upanishad_manuscript.jpg", desc_en: "All this is enveloped by the Lord.", desc_ne: "सबै ईश्वरले व्याप्त।", audio: "https://archive.org/download/IshaUpanishadWithMeaning_201709/Isha%20Upanishad%20with%20meaning.mp3", badge: "Mukhya Upanishad",
-      text_en: "॥ ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ॥\n\nAll this, whatever moves in this moving world, is enveloped by the Lord. Renounce and enjoy. Do not covet anyone's wealth.\n\nOne who sees all beings in the Self and the Self in all beings, feels no hatred.\n\nWhen to the enlightened one, all beings become the Self, then what delusion and sorrow can there be?\n\nHe who sees all beings in the Self, and the Self in all beings, feels no hatred.",
-      text_ne: "॥ ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ॥\n\nयस संसारमा जे गतिमान छ, सबै ईश्वरले व्याप्त छ। त्याग गर र भोग गर। कसैको धनको लालसा नगर।\n\nजसले सबै प्राणीलाई आत्मामा र आत्मालाई सबै प्राणीमा देख्छ, उसलाई घृणा हुँदैन।\n\nसबै प्राणी आत्मा भएपछि त्यहाँ मोह र दुःख कसरी रहन सक्छ?" },
-    { name: "🔥 Kaṭha Upaniṣad (कठ उपनिषद्)", category: "upanishads", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Nachiketa_and_Yama.jpg/640px-Nachiketa_and_Yama.jpg", desc_en: "Nachiketa & Yama - secret of immortality.", desc_ne: "नचिकेता र यम - अमरत्वको रहस्य।", audio: "https://archive.org/download/KathaUpanishad_201801/Katha%20Upanishad.mp3", badge: "Nachiketa Story",
-      text_en: "Nachiketa asked Lord Yama: 'What happens after death?' Yama said: 'The Self (Atman) is not born, nor does it die. It is eternal, immortal.\n\nThe wise one knows the Self as the chariot rider, senses as horses, mind as reins.\n\nHe who has understanding as driver reaches the ultimate goal.'\n\nThe Self is smaller than the smallest, greater than the greatest. It is seated in the heart of every living being.",
-      text_ne: "नचिकेताले यमराजलाई सोधे: 'मृत्युपछि के हुन्छ?' यमले भने: 'आत्मा न जन्मिन्छ, न मर्छ। यो शाश्वत, अमर छ।\n\nज्ञानीले आत्मालाई रथी, इन्द्रियलाई घोडा, मनलाई लगाम मान्छ।\n\nजसको बुद्धि सारथी छ, ऊ परम लक्ष्यमा पुग्छ।'\n\nआत्मा सानोभन्दा सानो, ठूलोभन्दा ठूलो छ। यो हरेक प्राणीको हृदयमा बस्छ।" },
-    { name: "🕉️ Māṇḍūkya Upaniṣad (माण्डुक्य उपनिषद्)", category: "upanishads", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Om_symbol.svg/640px-Om_symbol.svg.png", desc_en: "OM - four states of consciousness.", desc_ne: "ॐ - चेतनाका चार अवस्था।", audio: "https://archive.org/download/MandukyaUpanishad_201801/Mandukya%20Upanishad.mp3", badge: "OM Meditation",
-      text_en: "OM is the whole universe. The past, present, future - all is OM. That beyond time is also OM.\n\nThe four states are: Waking (Jagrat), Dreaming (Swapna), Deep Sleep (Sushupti), and Turiya (pure consciousness).\n\nTuriya is not conscious of the internal world nor the external world. It is the Self, to be known as the ultimate reality.",
-      text_ne: "ॐ नै सम्पूर्ण ब्रह्माण्ड हो। विगत, वर्तमान, भविष्य - सबै ॐ हो। समयभन्दा पर पनि ॐ हो।\n\nचार अवस्थाहरू: जाग्रत, सपन, सुषुप्ति, र तुरीय (शुद्ध चेतना)।\n\nतुरीय न भित्री संसारको चेतना हो, न बाहिरी। यो आत्मा हो, परम सत्यको रूपमा जान्नुपर्छ।" },
-    { name: "📖 Bhagavad Gītā (श्रीमद् भगवद् गीता)", category: "gita", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/BhagavadGita-19thcentury.jpg/800px-BhagavadGita-19thcentury.jpg", desc_en: "Complete 18 chapters - The Song of God.", desc_ne: "पूरा १८ अध्याय - भगवानको गीत।", audio: "https://archive.org/download/SrimadBhagavadGita_201712/Srimad%20Bhagavad%20Gita.mp3", badge: "700 Shlokas",
-      text_en: "॥ यदा यदा हि धर्मस्य ग्लानिर्भवति भारत ॥\n\nChapter 2, Verse 47: कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। You have a right to perform your prescribed duties, but you are not entitled to the fruits of action.\n\nChapter 4, Verse 7-8: यदा यदा हि धर्मस्य ग्लानिर्भवति भारत... Whenever there is a decline in righteousness and rise in unrighteousness, O Arjuna, then I manifest myself.\n\nChapter 6, Verse 5: उद्धरेदात्मनात्मानं नात्मानमवसादयेत्। One must elevate oneself by one's own mind, not degrade oneself.\n\nChapter 18, Verse 66: सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions; do not fear.",
-      text_ne: "॥ यदा यदा हि धर्मस्य ग्लानिर्भवति भारत ॥\n\nअध्याय २, श्लोक ४७: कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। तिमीलाई कर्तव्य गर्ने अधिकार छ, तर फलको अधिकार छैन।\n\nअध्याय ४, श्लोक ७-८: यदा यदा हि धर्मस्य ग्लानिर्भवति भारत... जब जब धर्मको ह्रास हुन्छ र अधर्म बढ्छ, तब तब म अवतार लिन्छु।\n\nअध्याय ६, श्लोक ५: उद्धरेदात्मनात्मानं नात्मानमवसादयेत्। मानिसले आफ्नै मनबाट आफूलाई उद्धार गर्नुपर्छ, आफूलाई पतन गर्नु हुँदैन।\n\nअध्याय १८, श्लोक ६६: सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज। सबै प्रकारको धर्म त्यागेर केवल मेरो शरणमा आउ। म तिमीलाई सबै पापबाट मुक्त गर्नेछु, डर नमान।" }
-  ];
+const books = [
+    { name: "Ṛg Veda (ऋग्वेद)", desc: "The oldest Veda", text: "ऋग्वेदको मन्त्र... (Here you put full text)" },
+    { name: "Īśa Upaniṣad (ईशा उपनिषद्)", desc: "All this is enveloped by the Lord.", text: "ईशावास्यमिदं सर्वं... (Here you put full text)" }
+];
 
-  // Add more Upanishads
-  const moreUpanishads = [
-    { name: "📿 Chāndogya Upaniṣad", category: "upanishads", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Chandogya_Upanishad_manuscript_leaf.jpg/640px-Chandogya_Upanishad_manuscript_leaf.jpg", desc_en: "Tat Tvam Asi - That Thou Art.", desc_ne: "तत् त्वम् असि - त्यो तिमी नै हौ।", audio: "https://archive.org/download/Chandogya_Upanishad/Chandogya.mp3", badge: "Mahavakya",
-      text_en: "Tat Tvam Asi - That Thou Art. The essence of Chandogya Upanishad is that the individual Self is identical with the supreme Brahman. The whole universe is pervaded by Brahman.\n\nSvetaketu, listen: That which is the finest essence - this whole world has that as its Self. That is Reality. That is Atman. That art thou, O Svetaketu.",
-      text_ne: "तत् त्वम् असि - त्यो तिमी नै हौ। छान्दोग्य उपनिषद्को सार यो छ कि व्यक्तिगत आत्मा परम ब्रह्मसँग एक छ। सम्पूर्ण ब्रह्माण्ड ब्रह्मले व्याप्त छ।\n\nश्वेतकेतु, सुन: जो सूक्ष्मतम सार हो - यो सम्पूर्ण संसार त्यसैको आत्मा हो। त्यो नै सत्य हो। त्यो नै आत्मा हो। त्यो तिमी नै हौ, हे श्वेतकेतु।" }
-  ];
-  
-  const allBooks = [...booksData, ...moreUpanishads];
-  let currentLang = 'en';
-  let currentCategory = 'all';
-  let searchTerm = '';
+let currentLang = 'en';
 
-  function renderBooks() {
-    const container = document.getElementById('booksContainer');
-    let filtered = allBooks.filter(b => currentCategory === 'all' || b.category === currentCategory);
-    if (searchTerm) {
-      filtered = filtered.filter(b => b.name.toLowerCase().includes(searchTerm) || b.desc_en.toLowerCase().includes(searchTerm));
-    }
-    container.innerHTML = filtered.map((book, idx) => `
-      <div class="book-card">
-        <img class="book-img" src="${book.img}" onerror="this.src='https://placehold.co/400x250/1f1a14/ff8c42?text=${encodeURIComponent(book.name)}'">
-        <div class="book-content">
-          <h3>${book.name}</h3>
-          <p class="lang-en">${book.desc_en}</p>
-          <p class="lang-ne" style="display:none;">${book.desc_ne}</p>
-          <div class="custom-audio"><audio controls><source src="${book.audio}" type="audio/mpeg">Your browser does not support audio.</audio></div>
-          <button class="btn-read" onclick="openBookModal(${idx})"><i class="fas fa-book-open"></i> <span class="lang-en">📖 Read Full Scripture</span><span class="lang-ne" style="display:none;">📖 पूरा शास्त्र पढ्नुहोस्</span></button>
-          <div class="vedic-badge" style="margin-top:8px;">${book.badge}</div>
+function renderBooks() {
+    const list = document.getElementById('bookList');
+    list.innerHTML = books.map((b, i) => `
+        <div class="book-card">
+            <h3>${b.name}</h3>
+            <p>${b.desc}</p>
+            <button onclick="openModal(${i})">Read Full</button>
         </div>
-      </div>
     `).join('');
-  }
+}
 
-  function openBookModal(index) {
-    let filtered = allBooks.filter(b => currentCategory === 'all' || b.category === currentCategory);
-    if (searchTerm) filtered = filtered.filter(b => b.name.toLowerCase().includes(searchTerm));
-    const book = filtered[index];
-    if (!book) return;
-    document.getElementById('modalTitle').innerHTML = book.name;
-    const text = currentLang === 'en' ? book.text_en : (book.text_ne || book.text_en);
-    document.getElementById('modalText').innerHTML = `<div style="font-family:'Playfair Display',serif; line-height:1.9;">${text.replace(/\n/g, '<br>')}</div>`;
-    document.getElementById('readingModal').style.display = 'block';
-  }
-  function closeModal() { document.getElementById('readingModal').style.display = 'none'; }
-  function searchBooks() { searchTerm = document.getElementById('searchInput').value.toLowerCase(); renderBooks(); }
+function openModal(i) {
+    document.getElementById('modalTitle').innerText = books[i].name;
+    document.getElementById('modalBody').innerText = books[i].text;
+    document.getElementById('modal').style.display = 'block';
+}
 
-  document.querySelectorAll('.cat-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentCategory = btn.getAttribute('data-cat');
-      renderBooks();
-    });
-  });
+function closeModal() { document.getElementById('modal').style.display = 'none'; }
+function changeLang(lang) { currentLang = lang; alert('Language switched to ' + lang); }
 
-  function switchLanguage(lang) {
-    currentLang = lang;
-    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? '' : 'none');
-    document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? '' : 'none');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
-    renderBooks();
-  }
-
-  document.getElementById('quoteNavBtn')?.addEventListener('click', (e) => {
-    e.preventDefault();
-    document.querySelector('.quote-grid')?.scrollIntoView({ behavior: 'smooth' });
-  });
-
-  window.addEventListener('load', () => { renderBooks(); });
-  window.onclick = (e) => { if (e.target === document.getElementById('readingModal')) closeModal(); };
+renderBooks();
 </script>
+
 </body>
 </html>
