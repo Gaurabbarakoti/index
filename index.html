@@ -1,79 +1,597 @@
 <!DOCTYPE html>
 <html lang="ne">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaurab Barakoti - Content Creator & Santan Dharma</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gaurab Barakoti | Sanatan Dharma Content Creator</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  :root {
+    --black: #0a0a0a;
+    --surface: #111111;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --saffron: #ff9933;
+    --gold: #ffd700;
+    --neon: #ffcc00;
+    --neon-glow: 0 0 20px #ffcc0066, 0 0 45px #ffcc0022;
+    --white: #f5f5f5;
+    --muted: #aaa;
+    --ff-display: 'Syne', sans-serif;
+    --ff-body: 'Space Grotesk', sans-serif;
+    --ff-serif: 'Playfair Display', serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--ff-body);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* Divine Noise Overlay */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: 
+      radial-gradient(circle at 30% 20%, rgba(255,153,51,0.03) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+    opacity: 0.6;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.3rem 5vw;
+    background: rgba(10,10,10,0.9);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--ff-display);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .nav-logo span { color: var(--saffron); }
+
+  .nav-links {
+    display: flex; gap: 2.2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-links a:hover { color: var(--neon); text-shadow: var(--neon-glow); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 5vw 4rem;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(10,10,10,0.95), rgba(20,10,0,0.9));
+  }
+
+  #hero::before {
+    content: 'ॐ';
+    position: absolute;
+    right: -8vw; bottom: -15vh;
+    font-size: clamp(22rem, 45vw, 55rem);
+    font-weight: 900;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba(255,153,51,0.12);
+    opacity: 0.15;
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    position: relative; z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero-content h1 {
+    font-family: var(--ff-display);
+    font-size: clamp(3.5rem, 7vw, 8rem);
+    font-weight: 800;
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    margin-bottom: 1.2rem;
+  }
+  .hero-content .accent { color: var(--saffron); }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-desc {
+    font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.75;
+  }
+
+  .hero-cta {
+    display: flex; gap: 1.2rem; flex-wrap: wrap; margin-top: 2.5rem;
+  }
+
+  .btn-primary {
+    padding: 1rem 2.6rem;
+    background: linear-gradient(90deg, var(--saffron), #ffaa00);
+    color: var(--black);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: var(--neon-glow);
+  }
+  .btn-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 30px #ffcc00aa;
+  }
+
+  .btn-ghost {
+    padding: 1rem 2.6rem;
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--border);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover {
+    border-color: var(--saffron);
+    color: var(--saffron);
+  }
+
+  .hero-image {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 60px rgba(255,153,51,0.3);
+  }
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+  .hero-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* SCROLL */
+  .scroll-line {
+    position: absolute;
+    bottom: 3rem; left: 5vw;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .scroll-line::after {
+    content: '';
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--saffron));
+  }
+
+  /* SECTIONS */
+  section { padding: 8rem 5vw; position: relative; }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  /* ABOUT */
+  #about { background: var(--surface); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 1.1rem;
+    color: var(--muted);
+    margin-bottom: 1.6rem;
+  }
+  .about-text p strong { color: var(--gold); }
+
+  /* VEDIC STATS */
+  .vedic-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .stat-box {
+    background: var(--card);
+    padding: 2.2rem 1.8rem;
+    text-align: center;
+    border: 1px solid var(--border);
+    transition: all 0.4s;
+  }
+  .stat-box:hover {
+    border-color: var(--saffron);
+    transform: translateY(-10px);
+  }
+  .stat-num {
+    font-family: var(--ff-display);
+    font-size: 3.2rem;
+    font-weight: 800;
+    color: var(--gold);
+  }
+
+  /* SKILLS / SADHANA */
+  #skills { background: var(--black); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  .skill-card {
+    background: var(--card);
+    padding: 2.5rem;
+    border-radius: 8px;
+    transition: all 0.4s;
+  }
+  .skill-card:hover {
+    background: #222;
+    transform: translateY(-12px);
+    box-shadow: var(--neon-glow);
+  }
+  .skill-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* PORTFOLIO - Vedic Works */
+  #portfolio {
+    background: linear-gradient(to bottom, var(--surface), var(--black));
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+  .project-card {
+    background: var(--card);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.5s;
+  }
+  .project-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 30px 60px rgba(255,153,51,0.2);
+  }
+  .project-thumb {
+    height: 260px;
+    background: #1f1f1f;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    position: relative;
+  }
+  .project-overlay {
+    padding: 1.8rem;
+  }
+
+  /* MANTRA SECTION */
+  .mantra {
+    margin: 6rem 0;
+    text-align: center;
+    font-family: var(--ff-serif);
+    font-size: 1.8rem;
+    color: var(--gold);
+    font-style: italic;
+    padding: 3rem;
+    border: 1px dashed var(--saffron);
+    border-radius: 20px;
+  }
+
+  /* CONTACT */
+  #contact { background: var(--surface); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 5vw;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero-inner, .about-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
 </head>
 <body>
-  <!-- Hero Section -->
-  <header class="hero">
-    <h1>Gaurab Barakoti</h1>
-    <p>CONTENT CREATOR & DIGITAL ARTIST</p>
-    <p>Creating content that hits different. Stories, visuals, and ideas built to stop the scroll and stay in the mind.</p>
-    <a href="#work" class="btn">VIEW MY WORK</a>
-    <a href="#connect" class="btn">LET'S CONNECT</a>
-  </header>
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>Who I Am</h2>
-    <p>I'm Gaurab Barakoti - a content creator passionate about telling stories that resonate. From concept to execution, every piece of content I make carries a point of view.</p>
-    <p>I believe the best content doesn't just inform - it moves people. Whether it's video, photography, or digital storytelling, I bring energy and intention to everything I create.</p>
-    <a href="#connect" class="btn">WORK WITH ME</a>
-  </section>
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">GAURAB <span>ॐ</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">मेरो बारेमा</a></li>
+    <li><a href="#skills">साधना</a></li>
+    <li><a href="#portfolio">कार्यहरू</a></li>
+    <li><a href="#contact">सम्पर्क</a></li>
+  </ul>
+</nav>
 
-  <!-- Santan Dharma Section -->
-  <section id="santan-dharma" class="highlight">
-    <h2>सन्तान धर्म</h2>
-    <p>सन्तान धर्म हाम्रो जीवनको आधार हो। यसले परिवार, संस्कार, र समाजलाई जोड्ने शक्ति दिन्छ।</p>
-    <ul>
-      <li><strong>कर्तव्य:</strong> आमा-बुबाप्रति सम्मान र पालनपोषण।</li>
-      <li><strong>संस्कार:</strong> सत्य, धर्म, करुणा र सेवा।</li>
-      <li><strong>समाज:</strong> परिवारलाई सुदृढ बनाउने र समाजलाई योगदान दिने।</li>
-      <li><strong>आध्यात्मिकता:</strong> जीवनलाई अर्थपूर्ण बनाउने साधना।</li>
-    </ul>
-    <p>सन्तान धर्मले हामीलाई जिम्मेवार, संस्कारी र आध्यात्मिक व्यक्तित्व बनाउन मद्दत गर्छ।</p>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills">
-    <h2>My Skillset</h2>
-    <p>Video, Photography, Digital Storytelling, Graphic Design, Creative Direction.</p>
-  </section>
-
-  <!-- Featured Work -->
-  <section id="work">
-    <h2>Featured Projects</h2>
-    <div class="projects">
-      <div class="project-card">Project 1</div>
-      <div class="project-card">Project 2</div>
-      <div class="project-card">Project 3</div>
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-tag">Sanatan Dharma • Vedic Wisdom • Digital Sadhana</div>
+      <h1>
+        Gaurab<br/>
+        <span class="accent">Barakoti</span>
+      </h1>
+      <p class="hero-desc">
+        Sanatan Dharma को अमृत ज्ञानलाई आधुनिक डिजिटल माध्यमबाट विश्वभर फैलाउने साधक।<br>
+        Veda, Upanishad, Bhagavad Gita, Purana र आध्यात्मिक जीवनशैलीको सत्यलाई सरल र शक्तिशाली रूपमा प्रस्तुत गर्दै।
+      </p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn-primary">मेरो कार्यहरू हेर्नुहोस्</a>
+        <a href="#contact" class="btn-ghost">सम्पर्क गर्नुहोस्</a>
+      </div>
     </div>
-  </section>
 
-  <!-- Contact Section -->
-  <section id="connect">
-    <h2>Get in Touch</h2>
-    <p>Have a project, collab, or just want to connect? I'm always open to interesting conversations and new work.</p>
-    <form>
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <textarea placeholder="Tell me about your project..." required></textarea>
-      <button type="submit">Send Message</button>
+    <div class="hero-image">
+      <img src="/home/workdir/attachments/Gaurab logo.JPG" alt="Gaurab Barakoti - Sanatan Dharma Content Creator" style="width:100%; border-radius:12px;">
+    </div>
+  </div>
+  <div class="scroll-line">ॐ SCROLL DOWN ॐ</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">मैं को हुँ</div>
+  <div class="about-grid">
+    <div>
+      <h2>Sanatan Dharma को<br>सेवक र कथाकार</h2>
+      <p>
+        <strong>म Gaurab Barakoti</strong> हुँ — एउटा साधक, कन्टेन्ट क्रिएटर र Vedic ज्ञानको प्रसारक। 
+        मेरो यात्रा Veda, Upanishad र Bhagavad Gita बाट सुरु भएको हो। 
+      </p>
+      <p>
+        म विश्वास गर्छु कि Sanatan Dharma केवल धर्म होइन, यो जीवनको विज्ञान हो। 
+        म यसलाई TikTok, YouTube, Instagram र लेखहरू मार्फत युवा पुस्तासम्म पुर्‍याउँछु।
+      </p>
+    </div>
+    
+    <div class="vedic-stats">
+      <div class="stat-box">
+        <div class="stat-num">१००+</div>
+        <div style="color:#aaa; font-size:0.9rem;">Vedic Videos</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">५०K+</div>
+        <div style="color:#aaa; font-size:0.9rem;">Spiritual Seekers</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">१५+</div>
+        <div style="color:#aaa; font-size:0.9rem;">Books Studied</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">ॐ</div>
+        <div style="color:#aaa; font-size:0.9rem;">Eternal Truth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANTRA -->
+<div class="mantra">
+  "यतो धर्मस्ततो जयः ।<br>
+  जहाँ धर्म छ, त्यहाँ विजय छ।"
+</div>
+
+<!-- SKILLS / SADHANA -->
+<section id="skills">
+  <div class="section-label">मेरो साधना</div>
+  <h2>म के गर्छु</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📖</div>
+      <h3>Vedic Explanations</h3>
+      <p>Rigveda, Yajurveda, Samaveda र Atharvaveda को गहन व्याख्या सरल नेपाली/हिन्दीमा।</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🕉️</div>
+      <h3>Bhagavad Gita</h3>
+      <p>अध्याय अनुसार जीवन परिवर्तनकारी शिक्षाहरू। Karma, Bhakti र Jnana Yoga।</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎥</div>
+      <h3>Spiritual Reels</h3>
+      <p>Short, powerful videos जसले लाखौं युवालाई Dharma तिर आकर्षित गर्छन्।</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📿</div>
+      <h3>Purana Katha</h3>
+      <p>Mahabharata, Ramayana र Shiva Purana को कथाहरू जीवन्त रूपमा।</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🪔</div>
+      <h3>Daily Sadhana</h3>
+      <p>Meditation, Mantra, Puja र Spiritual Discipline को व्यावहारिक मार्गदर्शन।</p>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">✍️</div>
+      <h3>Articles &amp; Books</h3>
+      <p>Deep written content र Sanatan Dharma पुस्तक समीक्षा।</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-label">Featured Sadhana</div>
+  <h2>मेरा प्रमुख कार्यहरू</h2>
+  <div class="portfolio-grid">
+    <div class="project-card">
+      <div class="project-thumb">🕉️</div>
+      <div class="project-overlay">
+        <h3>Bhagavad Gita Series</h3>
+        <p>पूर्ण १८ अध्यायको आधुनिक व्याख्या।</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">📜</div>
+      <div class="project-overlay">
+        <h3>Veda Simplified</h3>
+        <p>Rigveda मन्त्रहरूको सरल अर्थ र प्रयोग।</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🔱</div>
+      <div class="project-overlay">
+        <h3>Shiva Mahima</h3>
+        <p>Lord Shiva को भक्ति र रहस्य।</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🪔</div>
+      <div class="project-overlay">
+        <h3>Daily Dharma</h3>
+        <p>रोजको आध्यात्मिक अभ्यास।</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">📖</div>
+      <div class="project-overlay">
+        <h3>Book Reviews</h3>
+        <p>Autobiography of a Yogi, Srimad Bhagavatam आदि।</p>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-thumb">🌍</div>
+      <div class="project-overlay">
+        <h3>Global Sanatan</h3>
+        <p>International audience लाई Sanatan Dharma।</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">जोडिनुहोस्</div>
+  <div style="max-width:900px; margin:auto; display:grid; grid-template-columns:1fr 1fr; gap:6rem;">
+    <div>
+      <h2>धर्मको यात्रामा<br>साथी बन्नुहोस्</h2>
+      <p style="color:var(--muted); margin-top:1.5rem; font-size:1.1rem;">
+        प्रश्न, सहकार्य वा साधना सम्बन्धी कुराकानी गर्न तयार छु। 
+        Sanatan Dharma को ज्योति सँगै फैलाऔं।
+      </p>
+    </div>
+    <form style="display:flex; flex-direction:column; gap:1.2rem;" onsubmit="handleSubmit(event)">
+      <input type="text" placeholder="तपाईंको नाम" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:6px;">
+      <input type="email" placeholder="ईमेल" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:6px;">
+      <textarea placeholder="तपाईंको सन्देश..." rows="5" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:6px;"></textarea>
+      <button type="submit" style="padding:1.1rem; background:var(--saffron); color:black; font-weight:700; border:none; border-radius:6px; cursor:pointer;">सन्देश पठाउनुहोस् ॐ</button>
     </form>
-    <div class="socials">
-      <a href="https://youtube.com">YouTube</a>
-      <a href="https://instagram.com">Instagram</a>
-      <a href="https://twitter.com">Twitter/X</a>
-      <a href="mailto:gaurab@example.com">Email</a>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Gaurab Barakoti. All rights reserved.</p>
-  </footer>
+<footer>
+  <p>© २०२६ Gaurab Barakoti • Sanatan Dharma को लागि समर्पित</p>
+  <p style="margin-top:0.5rem; opacity:0.6;">ॐ तत् सत्</p>
+</footer>
+
+<script>
+  // Simple form handler
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    const originalText = btn.textContent;
+    btn.textContent = 'ॐ सन्देश प्राप्त भयो!';
+    btn.style.background = '#4ade80';
+    setTimeout(() => {
+      btn.textContent = originalText;
+      btn.style.background = '';
+      e.target.reset();
+    }, 2500);
+  }
+
+  // Cursor effect
+  const cursor = document.createElement('div');
+  cursor.style.position = 'fixed';
+  cursor.style.width = '12px';
+  cursor.style.height = '12px';
+  cursor.style.border = '2px solid #ffcc00';
+  cursor.style.borderRadius = '50%';
+  cursor.style.pointerEvents = 'none';
+  cursor.style.zIndex = '9999';
+  cursor.style.mixBlendMode = 'difference';
+  document.body.appendChild(cursor);
+
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+</script>
 </body>
 </html>
