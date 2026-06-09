@@ -10,8 +10,8 @@
     --black: #0a0a0a;
     --surface: #111111;
     --card: #1a1a1a;
-    --border: #2a2a2a;
     --saffron: #ff9933;
+    --gold: #ffd700;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -25,54 +25,47 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.1rem 5vw;
+    padding: 1.2rem 5vw;
     background: rgba(10,10,10,0.95);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #222;
   }
 
-  .nav-logo { font-size: 1.4rem; font-weight: 800; }
+  .nav-logo { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; }
   .nav-logo span { color: var(--saffron); }
 
   .lang-switch {
-    display: flex; background: var(--card); padding: 4px; border-radius: 50px;
+    display: flex; background: #222; padding: 4px; border-radius: 50px;
   }
   .lang-btn {
-    padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
+    padding: 6px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
   }
   .lang-btn.active { background: var(--saffron); color: black; }
 
   #hero {
     min-height: 100vh;
-    display: flex; 
-    align-items: center;
-    padding: 110px 5vw 80px;
+    display: flex; align-items: center;
+    padding: 110px 5vw 100px;
     background: linear-gradient(180deg, #0a0a0a, #1a0f00);
     position: relative;
-    overflow: hidden;
   }
 
   .hero-content { max-width: 620px; z-index: 2; }
-  .hero-content h1 { font-size: clamp(2.8rem, 8vw, 6.2rem); font-weight: 800; line-height: 1.05; }
+  .hero-content h1 { font-size: clamp(2.8rem, 8.5vw, 6.5rem); font-weight: 800; line-height: 1.05; }
 
   .hero-image {
     position: absolute;
-    right: 6%;
-    bottom: 10%;
-    width: 40%;
-    border-radius: 24px;
+    right: 5%;
+    bottom: 12%;
+    width: 38%;
+    border-radius: 28px;
     overflow: hidden;
-    box-shadow: 0 0 90px rgba(255,153,51,0.45);
-    z-index: 1;
+    box-shadow: 0 0 100px rgba(255,153,51,0.5);
   }
-  .hero-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+  .hero-image img { width: 100%; display: block; }
 
-  section { padding: 6rem 5vw; }
-  .section-label { color: var(--saffron); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+  section { padding: 7rem 5vw 5rem; }
+  .section-label { color: var(--saffron); font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; font-weight: 700; }
 
   .books-grid {
     display: grid;
@@ -83,32 +76,33 @@
 
   .book-card {
     background: var(--card);
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
     transition: all 0.4s;
   }
-  .book-card:hover { transform: translateY(-15px); box-shadow: 0 0 50px rgba(255,153,51,0.35); }
-  .book-card img { width: 100%; height: 200px; object-fit: cover; }
-  .book-card .content { padding: 1.5rem; }
-  .audio-player { margin: 1rem 0; width: 100%; }
+  .book-card:hover { transform: translateY(-12px); box-shadow: 0 0 60px rgba(255,153,51,0.4); }
 
   .bottom-nav {
     position: fixed; bottom: 0; left: 0; right: 0;
     background: rgba(10,10,10,0.98);
     backdrop-filter: blur(20px);
-    border-top: 1px solid var(--border);
-    display: none; z-index: 1000;
+    border-top: 1px solid #222;
+    display: none;
+    z-index: 1000;
   }
-  .bottom-nav ul { display: flex; justify-content: space-around; list-style: none; padding: 12px 0; }
-  .bottom-nav a { color: #ccc; font-size: 0.75rem; text-decoration: none; text-align: center; }
+  .bottom-nav ul {
+    display: flex; justify-content: space-around; list-style: none; padding: 10px 0;
+  }
+  .bottom-nav a {
+    color: #aaa;
+    text-align: center;
+    font-size: 0.78rem;
+    text-decoration: none;
+  }
+  .bottom-nav a.active { color: var(--saffron); }
 
   @media (max-width: 768px) {
-    .hero-image {
-      position: relative;
-      right: auto;
-      width: 88%;
-      margin: 2.5rem auto 0;
-    }
+    .hero-image { position: relative; width: 85%; margin: 3rem auto 0; right: auto; }
     .hero-content { text-align: center; }
     .bottom-nav { display: block; }
   }
@@ -132,35 +126,35 @@
     
     <h1>Gaurab <span style="color:var(--saffron);">Barakoti</span></h1>
     
-    <p class="lang-en" style="margin:1.5rem 0 2rem; font-size:1.1rem; color:#ddd;">
+    <p class="lang-en" style="margin:1.6rem 0 2.5rem; font-size:1.1rem; color:#ddd;">
       A dedicated Sanatan Dharma content creator spreading the eternal wisdom of the Vedas, 
       Bhagavad Gita, Upanishads and spiritual living.
     </p>
-    <p class="lang-ne" style="margin:1.5rem 0 2rem; font-size:1.1rem; color:#ddd; display:none;">
+    <p class="lang-ne" style="margin:1.6rem 0 2.5rem; font-size:1.1rem; color:#ddd; display:none;">
       सनातन धर्मको अमर ज्ञानलाई आधुनिक माध्यमबाट फैलाउने समर्पित साधक।
     </p>
 
-    <a href="#books" style="background:var(--saffron); color:black; padding:1.2rem 3rem; border-radius:12px; font-weight:700; display:inline-block;">
+    <a href="#books" style="background:var(--saffron); color:black; padding:1.3rem 3.2rem; border-radius:14px; font-weight:700; display:inline-block;">
       LISTEN TO SACRED TEXTS
     </a>
   </div>
 
-  <!-- तिम्रो फोटो - exact filename -->
   <div class="hero-image">
     <img src="IMG_3015.JPG" alt="Gaurab Barakoti">
   </div>
 </section>
 
-<!-- Books + Audio Section -->
+<!-- Sacred Books -->
 <section id="books" style="background:var(--surface);">
   <div class="section-label">SACRED TEXTS & AUDIO</div>
   <h2>Listen to Vedas, Gita & Puranas</h2>
+
   <div class="books-grid">
     <div class="book-card">
       <img src="https://i.pinimg.com/474x/41/85/d9/4185d9e412ae68da8953a332750c1600.jpg" alt="Bhagavad Gita">
-      <div class="content">
+      <div class="content" style="padding:1.5rem;">
         <h3>Bhagavad Gita</h3>
-        <audio class="audio-player" controls>
+        <audio controls style="width:100%; margin:1rem 0;">
           <source src="https://archive.org/download/SrimadBhagavadGita_201712/Srimad%20Bhagavad%20Gita.mp3" type="audio/mpeg">
         </audio>
       </div>
@@ -168,11 +162,12 @@
   </div>
 </section>
 
-<!-- Bottom Nav -->
+<!-- Bottom Navigation -->
 <div class="bottom-nav">
   <ul>
-    <li><a href="#hero">🏠 Home</a></li>
+    <li><a href="#hero" class="active">🏠 Home</a></li>
     <li><a href="#books">🎧 Listen</a></li>
+    <li><a href="#">📸 Work</a></li>
   </ul>
 </div>
 
@@ -183,6 +178,7 @@
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
   }
+
   switchLanguage('en');
 </script>
 </body>
