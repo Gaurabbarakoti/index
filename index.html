@@ -3,123 +3,114 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Gaurab Barakoti | Sanatan Dharma Content Creator</title>
+<title>Gaurab Barakoti | Sanatan Dharma</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
   :root {
     --black: #0a0a0a;
     --surface: #111111;
     --card: #1a1a1a;
     --border: #2a2a2a;
     --saffron: #ff9933;
-    --gold: #ffd700;
-    --neon: #ffcc00;
-    --neon-glow: 0 0 20px #ffcc0066, 0 0 45px #ffcc0022;
-    --white: #f5f5f5;
-    --muted: #aaa;
-    --ff-display: 'Syne', sans-serif;
-    --ff-body: 'Space Grotesk', sans-serif;
-    --ff-serif: 'Playfair Display', serif;
   }
 
-  html { scroll-behavior: smooth; }
+  * { margin:0; padding:0; box-sizing:border-box; }
   body {
     background: var(--black);
-    color: var(--white);
-    font-family: var(--ff-body);
-    font-size: 16px;
+    color: #fff;
+    font-family: 'Space Grotesk', sans-serif;
     line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: radial-gradient(circle at 30% 20%, rgba(255,153,51,0.03) 0%, transparent 50%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 999;
-    opacity: 0.6;
   }
 
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 1.2rem 5vw;
+    padding: 1.1rem 5vw;
     background: rgba(10,10,10,0.95);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border);
   }
 
-  .nav-logo {
-    font-family: var(--ff-display);
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--white);
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-  }
+  .nav-logo { font-size: 1.4rem; font-weight: 800; }
   .nav-logo span { color: var(--saffron); }
 
   .lang-switch {
-    display: flex; gap: 4px; background: var(--card); padding: 4px; border-radius: 30px;
+    display: flex; background: var(--card); padding: 4px; border-radius: 50px;
   }
   .lang-btn {
-    padding: 6px 14px; border-radius: 30px; font-size: 0.85rem; font-weight: 600;
-    cursor: pointer; transition: all 0.3s;
+    padding: 6px 16px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; cursor: pointer;
   }
-  .lang-btn.active {
-    background: var(--saffron);
-    color: var(--black);
-  }
+  .lang-btn.active { background: var(--saffron); color: black; }
 
-  .hero-inner {
-    max-width: 1200px; margin: auto;
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
-    padding: 8rem 5vw 4rem;
-  }
-
-  h1 { font-family: var(--ff-display); font-size: clamp(3.4rem, 7vw, 7.5rem); line-height: 0.95; font-weight: 800; }
-  .accent { color: var(--saffron); }
-
-  .btn-primary {
-    padding: 1rem 2.6rem; background: linear-gradient(90deg, var(--saffron), #ffaa00);
-    color: var(--black); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-    border: none; border-radius: 6px; cursor: pointer; box-shadow: var(--neon-glow);
-  }
-  .btn-primary:hover { transform: translateY(-4px); }
-
-  .btn-ghost {
-    padding: 1rem 2.6rem; background: transparent; color: var(--white);
-    border: 2px solid var(--border); border-radius: 6px; font-weight: 600;
+  #hero {
+    min-height: 100vh;
+    display: flex; 
+    align-items: center;
+    padding: 110px 5vw 80px;
+    background: linear-gradient(180deg, #0a0a0a, #1a0f00);
+    position: relative;
+    overflow: hidden;
   }
 
+  .hero-content { max-width: 620px; z-index: 2; }
+  .hero-content h1 { font-size: clamp(2.8rem, 8vw, 6.2rem); font-weight: 800; line-height: 1.05; }
+
+  .hero-image {
+    position: absolute;
+    right: 6%;
+    bottom: 10%;
+    width: 40%;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 0 90px rgba(255,153,51,0.45);
+    z-index: 1;
+  }
   .hero-image img {
-    width: 100%; border-radius: 16px; box-shadow: 0 0 60px rgba(255,153,51,0.35);
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
-  section { padding: 7rem 5vw; }
-  .section-label { color: var(--saffron); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
+  section { padding: 6rem 5vw; }
+  .section-label { color: var(--saffron); font-size: 0.85rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; }
 
-  .skills-grid, .portfolio-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;
+  .books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2.5rem;
   }
 
-  .skill-card, .project-card {
-    background: var(--card); padding: 2rem; border-radius: 12px; transition: all 0.4s;
+  .book-card {
+    background: var(--card);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s;
   }
-  .project-card:hover, .skill-card:hover {
-    transform: translateY(-12px); box-shadow: var(--neon-glow);
-  }
+  .book-card:hover { transform: translateY(-15px); box-shadow: 0 0 50px rgba(255,153,51,0.35); }
+  .book-card img { width: 100%; height: 200px; object-fit: cover; }
+  .book-card .content { padding: 1.5rem; }
+  .audio-player { margin: 1rem 0; width: 100%; }
 
-  footer { padding: 3rem 5vw; text-align: center; color: var(--muted); border-top: 1px solid var(--border); }
+  .bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--border);
+    display: none; z-index: 1000;
+  }
+  .bottom-nav ul { display: flex; justify-content: space-around; list-style: none; padding: 12px 0; }
+  .bottom-nav a { color: #ccc; font-size: 0.75rem; text-decoration: none; text-align: center; }
 
   @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; text-align: center; }
-    .nav-links { display: none; }
-    section { padding: 5rem 5vw; }
+    .hero-image {
+      position: relative;
+      right: auto;
+      width: 88%;
+      margin: 2.5rem auto 0;
+    }
+    .hero-content { text-align: center; }
+    .bottom-nav { display: block; }
   }
 </style>
 </head>
@@ -127,7 +118,6 @@
 
 <nav>
   <a href="#hero" class="nav-logo">GAURAB <span>ॐ</span></a>
-  
   <div class="lang-switch">
     <button onclick="switchLanguage('en')" class="lang-btn active" id="btn-en">EN</button>
     <button onclick="switchLanguage('ne')" class="lang-btn" id="btn-ne">ने</button>
@@ -136,148 +126,64 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="section-label lang-en">Sanatan Dharma • Vedic Wisdom</div>
-      <div class="section-label lang-ne" style="display:none;">सनातन धर्म • वैदिक ज्ञान</div>
-      
-      <h1>
-        Gaurab <span class="accent">Barakoti</span>
-      </h1>
-      
-      <p class="hero-desc lang-en">
-        A dedicated Sanatan Dharma content creator spreading the eternal wisdom of the Vedas, 
-        Bhagavad Gita, Upanishads and spiritual living through modern digital media.
-      </p>
-      <p class="hero-desc lang-ne" style="display:none;">
-        सनातन धर्मको अमर ज्ञानलाई आधुनिक डिजिटल माध्यमबाट विश्वभर फैलाउने समर्पित साधक। 
-        वेद, गीता, उपनिषद् र आध्यात्मिक जीवनशैलीको सत्य।
-      </p>
+  <div class="hero-content">
+    <div class="section-label lang-en">SANATAN DHARMA • VEDIC WISDOM</div>
+    <div class="section-label lang-ne" style="display:none;">सनातन धर्म • वैदिक ज्ञान</div>
+    
+    <h1>Gaurab <span style="color:var(--saffron);">Barakoti</span></h1>
+    
+    <p class="lang-en" style="margin:1.5rem 0 2rem; font-size:1.1rem; color:#ddd;">
+      A dedicated Sanatan Dharma content creator spreading the eternal wisdom of the Vedas, 
+      Bhagavad Gita, Upanishads and spiritual living.
+    </p>
+    <p class="lang-ne" style="margin:1.5rem 0 2rem; font-size:1.1rem; color:#ddd; display:none;">
+      सनातन धर्मको अमर ज्ञानलाई आधुनिक माध्यमबाट फैलाउने समर्पित साधक।
+    </p>
 
-      <div style="margin-top: 2rem;">
-        <a href="#portfolio" class="btn-primary lang-en">Explore My Work</a>
-        <a href="#portfolio" class="btn-primary lang-ne" style="display:none;">मेरो कार्यहरू हेर्नुहोस्</a>
+    <a href="#books" style="background:var(--saffron); color:black; padding:1.2rem 3rem; border-radius:12px; font-weight:700; display:inline-block;">
+      LISTEN TO SACRED TEXTS
+    </a>
+  </div>
+
+  <!-- तिम्रो नयाँ फोटो -->
+  <div class="hero-image">
+    <img src="IMG_3015.jpg" alt="Gaurab Barakoti">
+  </div>
+</section>
+
+<!-- Books Section -->
+<section id="books" style="background:var(--surface);">
+  <div class="section-label">SACRED TEXTS & AUDIO</div>
+  <h2>Listen to Vedas, Gita & Puranas</h2>
+  <div class="books-grid">
+    <div class="book-card">
+      <img src="https://i.pinimg.com/474x/41/85/d9/4185d9e412ae68da8953a332750c1600.jpg" alt="Bhagavad Gita">
+      <div class="content">
+        <h3>Bhagavad Gita</h3>
+        <audio class="audio-player" controls>
+          <source src="https://archive.org/download/SrimadBhagavadGita_201712/Srimad%20Bhagavad%20Gita.mp3" type="audio/mpeg">
+        </audio>
       </div>
     </div>
-
-    <div class="hero-image">
-      <img src="/home/workdir/attachments/Gaurab logo.JPG" alt="Gaurab Barakoti">
-    </div>
+    <!-- थप किताबहरू यहाँ राख्न सकिन्छ -->
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label lang-en">Who I Am</div>
-  <div class="section-label lang-ne" style="display:none;">म को हुँ</div>
-  
-  <h2 class="lang-en">Serving Sanatan Dharma through Digital Sadhana</h2>
-  <h2 class="lang-ne" style="display:none;">डिजिटल साधनामार्फत सनातन धर्मको सेवा</h2>
-
-  <p class="lang-en" style="max-width:700px; font-size:1.1rem; color:var(--muted);">
-    I am <strong>Gaurab Barakoti</strong>, a passionate content creator and spiritual seeker. 
-    My mission is to make ancient Vedic wisdom accessible, practical and inspiring for the modern world.
-  </p>
-  <p class="lang-ne" style="max-width:700px; font-size:1.1rem; color:var(--muted); display:none;">
-    म <strong>गौरव बराकोटी</strong> हुँ — एक उत्साही कन्टेन्ट क्रिएटर र साधक। 
-    मेरो लक्ष्य प्राचीन वैदिक ज्ञानलाई आधुनिक पुस्ताका लागि सुलभ, व्यावहारिक र प्रेरणादायी बनाउनु हो।
-  </p>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" style="background:var(--surface);">
-  <div class="section-label lang-en">My Sadhana</div>
-  <div class="section-label lang-ne" style="display:none;">मेरो साधना</div>
-  
-  <h2 class="lang-en">What I Offer</h2>
-  <h2 class="lang-ne" style="display:none;">म के दिन्छु</h2>
-
-  <div class="skills-grid">
-    <div class="skill-card">
-      <h3 class="lang-en">Vedic Knowledge</h3>
-      <h3 class="lang-ne" style="display:none;">वैदिक ज्ञान</h3>
-      <p class="lang-en">Clear explanations of Vedas, Upanishads &amp; Puranas</p>
-      <p class="lang-ne" style="display:none;">वेद, उपनिषद् र पुराणको सरल व्याख्या</p>
-    </div>
-    <div class="skill-card">
-      <h3 class="lang-en">Bhagavad Gita</h3>
-      <h3 class="lang-ne" style="display:none;">श्रीमद्भगवद् गीता</h3>
-      <p class="lang-en">Life-transforming teachings chapter by chapter</p>
-      <p class="lang-ne" style="display:none;">अध्याय अनुसार जीवन परिवर्तनकारी शिक्षाहरू</p>
-    </div>
-    <div class="skill-card">
-      <h3 class="lang-en">Spiritual Reels</h3>
-      <h3 class="lang-ne" style="display:none;">आध्यात्मिक रिल्स</h3>
-      <p class="lang-en">Short, powerful videos for the new generation</p>
-      <p class="lang-ne" style="display:none;">नयाँ पुस्ताका लागि छोटो र शक्तिशाली भिडियो</p>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="section-label lang-en">Featured Work</div>
-  <div class="section-label lang-ne" style="display:none;">विशेष कार्यहरू</div>
-  
-  <h2 class="lang-en">My Creations</h2>
-  <h2 class="lang-ne" style="display:none;">मेरा सिर्जनाहरू</h2>
-
-  <div class="portfolio-grid">
-    <div class="project-card"><h3 class="lang-en">Bhagavad Gita Series</h3><h3 class="lang-ne" style="display:none;">गीता श्रृंखला</h3></div>
-    <div class="project-card"><h3 class="lang-en">Veda Simplified</h3><h3 class="lang-ne" style="display:none;">वेद सरलीकरण</h3></div>
-    <div class="project-card"><h3 class="lang-en">Shiva Mahima</h3><h3 class="lang-ne" style="display:none;">शिव महिमा</h3></div>
-    <div class="project-card"><h3 class="lang-en">Daily Dharma</h3><h3 class="lang-ne" style="display:none;">दैनिक धर्म</h3></div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" style="background:var(--surface);">
-  <div class="section-label lang-en">Get In Touch</div>
-  <div class="section-label lang-ne" style="display:none;">सम्पर्क गर्नुहोस्</div>
-  
-  <h2 class="lang-en">Let's Spread Dharma Together</h2>
-  <h2 class="lang-ne" style="display:none;">साथै धर्म फैलाऔं</h2>
-
-  <form style="max-width:700px; margin:2rem auto; display:flex; flex-direction:column; gap:1rem;" onsubmit="handleSubmit(event)">
-    <input type="text" class="lang-en" placeholder="Your Name" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px;">
-    <input type="text" class="lang-ne" placeholder="तपाईंको नाम" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px; display:none;">
-    
-    <input type="email" class="lang-en" placeholder="Email Address" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px;">
-    <input type="email" class="lang-ne" placeholder="ईमेल ठेगाना" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px; display:none;">
-    
-    <textarea class="lang-en" placeholder="Your Message..." rows="5" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px;"></textarea>
-    <textarea class="lang-ne" placeholder="तपाईंको सन्देश..." rows="5" style="padding:1rem; background:var(--card); border:1px solid var(--border); color:white; border-radius:8px; display:none;"></textarea>
-    
-    <button type="submit" class="btn-primary lang-en" style="width:100%;">Send Message ॐ</button>
-    <button type="submit" class="btn-primary lang-ne" style="width:100%; display:none;">सन्देश पठाउनुहोस् ॐ</button>
-  </form>
-</section>
-
-<footer>
-  <p>© 2026 Gaurab Barakoti • Dedicated to Sanatan Dharma</p>
-  <p class="lang-ne" style="display:none;">© २०२६ गौरव बराकोटी • सनातन धर्ममा समर्पित</p>
-</footer>
+<!-- Bottom Nav -->
+<div class="bottom-nav">
+  <ul>
+    <li><a href="#hero">🏠 Home</a></li>
+    <li><a href="#books">🎧 Listen</a></li>
+  </ul>
+</div>
 
 <script>
   function switchLanguage(lang) {
-    document.querySelectorAll('.lang-en').forEach(el => {
-      el.style.display = lang === 'en' ? 'block' : 'none';
-    });
-    document.querySelectorAll('.lang-ne').forEach(el => {
-      el.style.display = lang === 'ne' ? 'block' : 'none';
-    });
-
+    document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang === 'en' ? 'block' : 'none');
+    document.querySelectorAll('.lang-ne').forEach(el => el.style.display = lang === 'ne' ? 'block' : 'none');
     document.getElementById('btn-en').classList.toggle('active', lang === 'en');
     document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
   }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    alert("Thank you! / धन्यवाद! 🙏 Message received.");
-    e.target.reset();
-  }
-
-  // Default to English
   switchLanguage('en');
 </script>
 </body>
